@@ -81,7 +81,10 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          COLOR_TOOL_NAME = Color_Tool",
+				"     )) ~> sink1"
 			]
 		}
 	}
