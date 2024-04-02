@@ -1,0 +1,31 @@
+{
+	"name": "AzureSqlTableDrift",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COLOR_TOOL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COLOR_TOOL_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "COLOR_TOOL_TYPE_ID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "COLOR_TOOL"
+		}
+	}
+}
