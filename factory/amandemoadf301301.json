@@ -1,0 +1,9 @@
+{
+	"name": "amandemoadf301301",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7f04276c-a7dc-432a-9b6d-6531c3b5c38f",
+		"tenantId": "0c2c5eb2-7477-4593-ac08-f1de3be027d2"
+	}
+}

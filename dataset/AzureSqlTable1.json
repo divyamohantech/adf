@@ -1,0 +1,34 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "column1",
+				"type": "varchar"
+			},
+			{
+				"name": "column2",
+				"type": "varchar"
+			},
+			{
+				"name": "column3",
+				"type": "varchar"
+			},
+			{
+				"name": "column4",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ColorTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
