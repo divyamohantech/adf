@@ -1,0 +1,7 @@
+{
+	"name": "samplePipeline",
+	"properties": {
+		"description": "samplePipeline",
+		"annotations": []
+	}
+}
