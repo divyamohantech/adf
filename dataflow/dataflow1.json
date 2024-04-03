@@ -21,6 +21,10 @@
 					"name": "sink1"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTableDrift",
+						"type": "DatasetReference"
+					},
 					"name": "sink2"
 				}
 			],
@@ -118,7 +122,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(COLOR_TOOL_NAME)) ~> RemoveDublicate",
+				"select1 aggregate(groupBy(COLOR_TOOL_NAME),",
+				"     CHIP_SOURCE = ERROR_FUNCTION('')) ~> RemoveDublicate",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -139,8 +144,19 @@
 				"     )) ~> sink1",
 				"RemoveDublicate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
 	}
