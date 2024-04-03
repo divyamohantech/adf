@@ -27,6 +27,9 @@
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "RemoveDublicate"
 				}
 			],
 			"scriptLines": [
@@ -115,6 +118,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(COLOR_TOOL_NAME)) ~> RemoveDublicate",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -133,7 +137,7 @@
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME",
 				"     )) ~> sink1",
-				"select1 sink(allowSchemaDrift: true,",
+				"RemoveDublicate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink2"
