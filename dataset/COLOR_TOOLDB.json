@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable2",
+	"name": "COLOR_TOOLDB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase4",
