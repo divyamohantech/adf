@@ -26,6 +26,9 @@
 				},
 				{
 					"name": "RemoveDublicate"
+				},
+				{
+					"name": "union1"
 				}
 			],
 			"scriptLines": [
@@ -124,7 +127,8 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 aggregate(groupBy(COLOR_TOOL_NAME),",
-				"     CHIP_SOURCE = ERROR_FUNCTION('')) ~> RemoveDublicate"
+				"     CHIP_SOURCE = ERROR_FUNCTION('')) ~> RemoveDublicate",
+				"SourceCOLORTOOLDB, RemoveDublicate union(byName: true)~> union1"
 			]
 		}
 	}
