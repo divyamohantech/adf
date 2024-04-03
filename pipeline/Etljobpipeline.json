@@ -17,6 +17,14 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"value": ""
+							},
+							{
+								"value": ""
+							}
+						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
@@ -31,8 +39,41 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false
-				}
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Color_Tool",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COLOR_TOOL_NAME",
+									"type": "varchar",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ReadInCSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "COLOR_TOOLDB",
+						"type": "DatasetReference"
+					}
+				]
 			},
 			{
 				"name": "dataflow1",
