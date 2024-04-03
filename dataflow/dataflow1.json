@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceFileInCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "COLOR_TOOLDB",
+						"type": "DatasetReference"
+					},
+					"name": "SourceCOLORTOOLDB"
 				}
 			],
 			"sinks": [],
@@ -65,6 +72,15 @@
 				"     allowSchemaDrift: false,",
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
+				"source(output(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceCOLORTOOLDB",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_NAME = Color_Tool,",
 				"          NAME = Color_Chip_Name,",
