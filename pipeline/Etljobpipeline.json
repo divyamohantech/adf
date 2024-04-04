@@ -104,8 +104,6 @@
 			{
 				"name": "LookupCOLOR_TOOLDS",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -124,6 +122,25 @@
 					"dataset": {
 						"referenceName": "Table_COLORTOOLDB",
 						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "LookupCOLOR_TOOLDS",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"condition": {
+						"value": "Where:User_Name = pfadmin",
+						"type": "Expression"
 					}
 				}
 			}
