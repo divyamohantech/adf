@@ -1,35 +1,23 @@
 {
-	"name": "dataflow1",
+	"name": "flowlet11",
 	"properties": {
-		"type": "MappingDataFlow",
+		"type": "Flowlet",
 		"typeProperties": {
-			"sources": [
-				{
-					"dataset": {
-						"referenceName": "ReadInCSV",
-						"type": "DatasetReference"
-					},
-					"name": "SourceFileInCSV"
-				},
-				{
-					"dataset": {
-						"referenceName": "COLOR_TOOLDB",
-						"type": "DatasetReference"
-					},
-					"name": "SourceCOLORTOOLDB"
-				}
-			],
+			"sources": [],
 			"sinks": [],
 			"transformations": [
 				{
 					"name": "select1"
 				},
 				{
-					"name": "TestConditionExist"
+					"name": "SourceFileInCSV"
+				},
+				{
+					"name": "SourceCOLORTOOLDB"
 				}
 			],
 			"scriptLines": [
-				"source(output(",
+				"input(output(",
 				"          Color_Tool as string,",
 				"          Color_Chip_Name as string,",
 				"          DateTime as string,",
@@ -69,18 +57,15 @@
 				"          i690 as string,",
 				"          i700 as string",
 				"     ),",
-				"     allowSchemaDrift: false,",
-				"     validateSchema: true,",
-				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
-				"source(output(",
+				"     order: 0,",
+				"     allowSchemaDrift: true) ~> SourceFileInCSV",
+				"input(output(",
 				"          COLOR_TOOL_ID as integer,",
 				"          COLOR_TOOL_NAME as string,",
 				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourceCOLORTOOLDB",
+				"     order: 1,",
+				"     allowSchemaDrift: true) ~> SourceCOLORTOOLDB",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_NAME = Color_Tool,",
 				"          NAME = Color_Chip_Name,",
@@ -122,10 +107,7 @@
 				"          i700",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"SourceFileInCSV, SourceCOLORTOOLDB exists(Color_Tool == COLOR_TOOL_NAME,",
-				"     negate:true,",
-				"     broadcast: 'auto')~> TestConditionExist"
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
