@@ -29,6 +29,12 @@
 				},
 				{
 					"name": "union1"
+				},
+				{
+					"name": "exists1"
+				},
+				{
+					"name": "TestConditionExist"
 				}
 			],
 			"scriptLines": [
@@ -128,7 +134,13 @@
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 aggregate(groupBy(COLOR_TOOL_NAME),",
 				"     CHIP_SOURCE = ERROR_FUNCTION('')) ~> RemoveDublicate",
-				"SourceCOLORTOOLDB, RemoveDublicate union(byName: true)~> union1"
+				"SourceCOLORTOOLDB, RemoveDublicate union(byName: true)~> union1",
+				"union1 exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1",
+				"SourceFileInCSV, SourceCOLORTOOLDB exists(Color_Tool == COLOR_TOOL_NAME,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> TestConditionExist"
 			]
 		}
 	}
