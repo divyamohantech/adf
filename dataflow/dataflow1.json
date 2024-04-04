@@ -22,10 +22,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "TestConditionExist"
 				},
 				{
-					"name": "TestConditionExist"
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -81,12 +81,15 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceCOLORTOOLDB",
-				"SourceFileInCSV select(mapColumn(",
+				"SourceFileInCSV, SourceCOLORTOOLDB exists(Color_Tool == COLOR_TOOL_NAME,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> TestConditionExist",
+				"TestConditionExist select(mapColumn(",
 				"          COLOR_TOOL_NAME = Color_Tool,",
 				"          NAME = Color_Chip_Name,",
-				"          CREATE_DATE = DateTime,",
-				"          CHIP_SOURCE = Color_Chip_Source,",
-				"          MEASUREMENT_SCHEME = Scheme,",
+				"          DateTime,",
+				"          Color_Chip_Source,",
+				"          Scheme,",
 				"          Instrument,",
 				"          Geometry,",
 				"          i400,",
@@ -122,10 +125,7 @@
 				"          i700",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"SourceFileInCSV, SourceCOLORTOOLDB exists(Color_Tool == COLOR_TOOL_NAME,",
-				"     negate:true,",
-				"     broadcast: 'auto')~> TestConditionExist"
+				"     skipDuplicateMapOutputs: true) ~> select2"
 			]
 		}
 	}
