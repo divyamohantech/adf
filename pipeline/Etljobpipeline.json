@@ -5,6 +5,8 @@
 			{
 				"name": "Read Csv and Push to Azure DB",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -102,6 +104,8 @@
 			{
 				"name": "LookupCOLOR_TOOLDS",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
