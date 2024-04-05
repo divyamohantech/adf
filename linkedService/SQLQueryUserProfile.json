@@ -1,0 +1,12 @@
+{
+	"name": "SQLQueryUserProfile",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=testserverdatafactory.database.windows.net;initial catalog=datafactory;user id=testserverdatafactory",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJCRUNDRUJDLTkzMkQtNERCNi1CREQyLUZGQURFMjI2Njc2Ml8xYTQ3ZmE4Yi00ODdiLTQxOTEtYjJkMi05Y2M4MDY0YmZiOGUiDQp9"
+		}
+	}
+}
