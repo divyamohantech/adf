@@ -1,0 +1,52 @@
+{
+	"name": "AzureSqlTableProfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkerServiceOfUserProfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "USER_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ENTITY_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "USER_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "USER_TYPE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PASSWORD_EXPIRED",
+				"type": "varchar"
+			},
+			{
+				"name": "IS_INACTIVE",
+				"type": "varchar"
+			},
+			{
+				"name": "RESTRICT_PREFERENCES_ACCESS",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGINAL_ENTITY_ID",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "USER_PROFILE"
+		}
+	}
+}
