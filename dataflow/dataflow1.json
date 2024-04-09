@@ -17,6 +17,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceCOLORTOOLDB"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -92,6 +95,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceCOLORTOOLDB",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
 				"SourceFileInCSV, SourceCOLORTOOLDB exists(Color_Tool == COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
