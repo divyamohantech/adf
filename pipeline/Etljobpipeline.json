@@ -132,6 +132,8 @@
 			{
 				"name": "Lookupfetch",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -157,14 +159,9 @@
 			{
 				"name": "Entity_id",
 				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Lookupfetch ",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -176,6 +173,22 @@
 						"value": "@activity('Lookupfetch ').output",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pipeline1",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],
