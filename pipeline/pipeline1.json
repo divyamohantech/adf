@@ -45,14 +45,6 @@
 									"type": "varchar",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "ENTITY_ID",
-									"type": "int",
-									"physicalType": "int",
-									"precision": 10
-								}
 							}
 						],
 						"typeConversion": true,
