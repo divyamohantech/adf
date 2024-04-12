@@ -65,7 +65,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "TEST_TABLE"
+			"table": "PANEL"
 		}
 	}
 }
