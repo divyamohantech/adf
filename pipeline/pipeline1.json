@@ -45,7 +45,8 @@
 									"type": "varchar",
 									"physicalType": "varchar"
 								}
-							}
+							},
+							null
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
@@ -56,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ReadInCSV",
+						"referenceName": "DemoCSV",
 						"type": "DatasetReference"
 					}
 				],
