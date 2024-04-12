@@ -34,6 +34,27 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Color_Chip_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Color_Chip_Name",
+									"type": "varchar",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "ENTITY_ID",
+									"type": "int",
+									"physicalType": "int",
+									"precision": 10
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
