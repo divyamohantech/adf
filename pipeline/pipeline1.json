@@ -45,8 +45,7 @@
 									"type": "varchar",
 									"physicalType": "varchar"
 								}
-							},
-							null
+							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
