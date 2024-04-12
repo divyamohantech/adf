@@ -1,0 +1,21 @@
+{
+	"name": "AzureSqlTableTest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseUserprofile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Color_Chip_Name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TEST_TABLE"
+		}
+	}
+}
