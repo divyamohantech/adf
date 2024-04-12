@@ -29,8 +29,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false,
-						"disableMetricsCollection": false
+						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -64,7 +63,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzurePANEL",
+						"referenceName": "AzureSqlTableProfile",
 						"type": "DatasetReference"
 					}
 				]

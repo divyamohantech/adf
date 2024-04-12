@@ -46,7 +46,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "USER_PROFILE"
+			"table": "TEST_TABLE"
 		}
 	}
 }
