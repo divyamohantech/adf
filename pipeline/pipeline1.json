@@ -26,7 +26,8 @@
 						"type": "DelimitedTextSource",
 						"additionalColumns": [
 							{
-								"value": "$$FILEPATH"
+								"name": "Entity_ID ",
+								"value": ""
 							}
 						],
 						"storeSettings": {
