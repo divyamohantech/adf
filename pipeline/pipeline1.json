@@ -126,6 +126,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "declare @sql nvarchar(1000)\n\nselect @sql = entity_id from [dbo].[USER_PROFILE] where user_name = 'pfadmin'\nselect @sql",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
