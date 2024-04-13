@@ -112,7 +112,7 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "UserProfileLookUP",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -135,6 +135,24 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "EntityID",
+				"description": "@activity('UserProfileLookUP').output",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "UserProfileLookUP",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"annotations": []
