@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data from csv to panel",
+				"name": "Copy data csv to azure panel",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
