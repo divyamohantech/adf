@@ -19,7 +19,11 @@
 					"name": "SourceCOLORTOOLDB"
 				},
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "TableUserProfile",
+						"type": "DatasetReference"
+					},
+					"name": "SourceUserProfile"
 				}
 			],
 			"sinks": [
@@ -100,7 +104,9 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceCOLORTOOLDB",
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceUserProfile",
 				"select3, SourceCOLORTOOLDB exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
