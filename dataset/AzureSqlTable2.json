@@ -1,0 +1,62 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedServiceForPanel",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PANEL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_METALLIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATE_USER_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATE_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_PUBLIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENTITY_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_INACTIVE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_SEARCH_INDEX_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_FLAGGED",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "PANEL"
+		}
+	}
+}
