@@ -17,6 +17,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceCOLORTOOLDB"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -26,6 +29,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "TableCOLORTOOLDB"
+				},
+				{
+					"dataset": {
+						"referenceName": "TablePANEL",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
 				}
 			],
 			"transformations": [
@@ -89,6 +99,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceCOLORTOOLDB",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
 				"select3, SourceCOLORTOOLDB exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
@@ -151,7 +163,30 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME",
-				"     )) ~> TableCOLORTOOLDB"
+				"     )) ~> TableCOLORTOOLDB",
+				"select3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          PANEL_ID as integer,",
+				"          Color_Chip_Name as string,",
+				"          IS_METALLIC as integer,",
+				"          CREATE_USER_ID as integer,",
+				"          CREATE_DATE as timestamp,",
+				"          NOTES as string,",
+				"          IS_PUBLIC as integer,",
+				"          ENTITY_ID as integer,",
+				"          IS_INACTIVE as integer,",
+				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
+				"          IS_FLAGGED as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
