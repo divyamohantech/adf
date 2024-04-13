@@ -25,7 +25,7 @@
 						"referenceName": "Table_COLORTOOLDB",
 						"type": "DatasetReference"
 					},
-					"name": "sink2"
+					"name": "TableCOLORTOOLDB"
 				}
 			],
 			"transformations": [
@@ -151,7 +151,7 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME",
-				"     )) ~> sink2"
+				"     )) ~> TableCOLORTOOLDB"
 			]
 		}
 	}
