@@ -34,11 +34,6 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
-					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
@@ -50,27 +45,15 @@
 								},
 								"sink": {
 									"name": "COLOR_TOOL_NAME",
-									"type": "varchar",
-									"physicalType": "varchar"
+									"type": "varchar"
 								}
 							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						]
 					}
 				},
 				"inputs": [
 					{
 						"referenceName": "ReadInCSV",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "COLOR_TOOLDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -143,10 +126,6 @@
 						"sqlReaderQuery": "declare @sql nvarchar(1000)\r\n\r\nselect @sql = entity_id from [dbo].[USER_PROFILE] where user_name = 'pfadmin'\r\nselect @sql",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
-					},
-					"dataset": {
-						"referenceName": "AzureSqlTableProfile",
-						"type": "DatasetReference"
 					}
 				}
 			},
