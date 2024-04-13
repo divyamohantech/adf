@@ -12,6 +12,10 @@
 					"name": "SourceFileInCSV"
 				},
 				{
+					"dataset": {
+						"referenceName": "Table_COLORTOOLDB",
+						"type": "DatasetReference"
+					},
 					"name": "SourceCOLORTOOLDB"
 				}
 			],
@@ -76,8 +80,15 @@
 				"     allowSchemaDrift: false,",
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SourceCOLORTOOLDB",
+				"source(output(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceCOLORTOOLDB",
 				"select3, SourceCOLORTOOLDB exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
