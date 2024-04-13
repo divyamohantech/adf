@@ -165,10 +165,19 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": ""
+					"variableName": "Entity_ID",
+					"value": {
+						"value": "@activity('UserProfileLookUP').output.pipelineReturnValue",
+						"type": "Expression"
+					}
 				}
 			}
 		],
+		"variables": {
+			"Entity_ID": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
