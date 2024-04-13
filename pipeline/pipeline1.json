@@ -86,7 +86,7 @@
 		],
 		"variables": {
 			"Entity_ID": {
-				"type": "Integer"
+				"type": "Array"
 			}
 		},
 		"annotations": []
