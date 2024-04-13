@@ -35,7 +35,7 @@
 						"referenceName": "TablePANEL",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "TablePANEL"
 				}
 			],
 			"transformations": [
@@ -186,7 +186,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> TablePANEL"
 			]
 		}
 	}
