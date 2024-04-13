@@ -167,7 +167,7 @@
 				"typeProperties": {
 					"variableName": "Entity_ID",
 					"value": {
-						"value": "@activity('UserProfileLookUP').output",
+						"value": "@activity('UserProfileLookUP').output.firstRow",
 						"type": "Expression"
 					}
 				}
