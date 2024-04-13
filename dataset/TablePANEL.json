@@ -1,5 +1,5 @@
 {
-	"name": "AzurePANEL",
+	"name": "TablePANEL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabasePANEL",
