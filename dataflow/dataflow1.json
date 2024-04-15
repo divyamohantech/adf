@@ -50,7 +50,10 @@
 					"name": "select3"
 				},
 				{
-					"name": "lookupFetchEntityID"
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
 				}
 			],
 			"scriptLines": [
@@ -100,7 +103,8 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourceUserprofile",
+				"     query: 'Select ENTITY_ID from [dbo].[USER_PROFILE] Where User_Name =\\'pfadmin\\'',",
+				"     format: 'query') ~> SourceUserprofile",
 				"source(output(",
 				"          COLOR_TOOL_ID as integer,",
 				"          COLOR_TOOL_NAME as string,",
@@ -155,10 +159,9 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"SourceUserprofile, SourceFileInCSV lookup(ERROR_FUNCTION('') == Color_Chip_Name,",
-				"     multiple: false,",
-				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupFetchEntityID",
+				"select3 derive(ENTITY_ID = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"SourceUserprofile derive(column1 = ERROR_FUNCTION(''),",
+				"          column2 = ERROR_FUNCTION('')) ~> derivedColumn2",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -177,7 +180,7 @@
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME",
 				"     )) ~> TableCOLORTOOLDB",
-				"select3 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          PANEL_ID as integer,",
