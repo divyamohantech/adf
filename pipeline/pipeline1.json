@@ -19,7 +19,8 @@
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
-				}
+				},
+				"userProperties": []
 			},
 			{
 				"name": "EntityID",
@@ -152,13 +153,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
 						"additionalColumns": [
 							{
 								"name": "ENTITY_ID",
-								"value": "@activity('UserProfileLookUP').output"
+								"value": {
+									"value": "@activity('UserProfileLookUP').output",
+									"type": "Expression"
+								}
 							}
 						],
 						"storeSettings": {
@@ -190,8 +195,7 @@
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
-							},
-							null
+							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
@@ -212,6 +216,30 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "dataflow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"variables": {
