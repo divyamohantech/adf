@@ -50,7 +50,7 @@
 					"name": "select3"
 				},
 				{
-					"name": "select4"
+					"name": "SelectEntityID"
 				}
 			],
 			"scriptLines": [
@@ -156,7 +156,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"SourceUserProfile select(skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select4",
+				"     skipDuplicateMapOutputs: true) ~> SelectEntityID",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
