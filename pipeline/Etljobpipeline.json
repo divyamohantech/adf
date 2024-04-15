@@ -3,6 +3,62 @@
 	"properties": {
 		"activities": [
 			{
+				"name": "Read Csv and Push to Azure DB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"value": ""
+							},
+							{
+								"value": ""
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Color_Tool",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COLOR_TOOL_NAME",
+									"type": "varchar"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ReadInCSV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
 				"name": "dataflow1",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
