@@ -166,7 +166,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"select3 derive(ENTITY_ID = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"select3 derive(ENTITY_ID = SinkEntityIDValue#output()) ~> derivedColumn1",
 				"SourceUserprofile derive(ENTITY_ID = toInteger(ENTITY_ID)) ~> AddColumnsValueEntityID",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
