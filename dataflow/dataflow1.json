@@ -123,7 +123,7 @@
 				"     format: 'table') ~> SourceColorTool",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_NAME == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
-				"     broadcast: 'auto')~> TestConditionExist",
+				"     broadcast: 'left')~> TestConditionExist",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_NAME = Color_Tool,",
 				"          NAME = Color_Chip_Name,",
