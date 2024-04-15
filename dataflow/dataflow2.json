@@ -29,10 +29,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "INFILEJOINPANEL"
 				},
 				{
-					"name": "join3"
+					"name": "RESULTJOINSOURCECOLOR"
 				}
 			],
 			"scriptLines": [
@@ -137,12 +137,12 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1, SOURCECOLORTOOL join(Color_Tool == COLOR_TOOL_NAME,",
+				"     broadcast: 'auto')~> INFILEJOINPANEL",
+				"INFILEJOINPANEL, SOURCECOLORTOOL join(Color_Tool == COLOR_TOOL_NAME,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join3"
+				"     broadcast: 'auto')~> RESULTJOINSOURCECOLOR"
 			]
 		}
 	}
