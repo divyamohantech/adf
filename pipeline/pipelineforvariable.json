@@ -3,9 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "LookupForUserProfile",
-				"description": "Lookup to fetch entity id from userprofile table",
-				"type": "Lookup",
+				"name": "dataflow1",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -14,17 +13,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select * from [dbo].[USER_PROFILE] where user_name='pfadmin'",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference"
 					},
-					"dataset": {
-						"referenceName": "TableUserProfile",
-						"type": "DatasetReference"
-					}
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
