@@ -57,7 +57,7 @@
 					"name": "select3"
 				},
 				{
-					"name": "lookup1"
+					"name": "lookupFetchEntityID"
 				}
 			],
 			"scriptLines": [
@@ -205,10 +205,10 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"SourceUserprofile lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"SourceUserprofile, SourceFileInCSV lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
 				"     multiple: false,",
 				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookup1",
+				"     broadcast: 'auto')~> lookupFetchEntityID",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
