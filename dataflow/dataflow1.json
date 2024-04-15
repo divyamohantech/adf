@@ -196,7 +196,7 @@
 				"     mapColumn(",
 				"          ENTITY_ID",
 				"     )) ~> SinkEntityIDValue",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: false,",
 				"     validateSchema: false,",
 				"     input(",
 				"          PANEL_ID as integer,",
