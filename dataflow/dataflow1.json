@@ -48,6 +48,9 @@
 				},
 				{
 					"name": "select3"
+				},
+				{
+					"name": "select4"
 				}
 			],
 			"scriptLines": [
@@ -152,6 +155,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
+				"SourceUserProfile select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
