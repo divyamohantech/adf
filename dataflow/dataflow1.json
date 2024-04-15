@@ -23,7 +23,7 @@
 						"referenceName": "TableUserProfile",
 						"type": "DatasetReference"
 					},
-					"name": "SourceUserProfile"
+					"name": "SourceInCSV"
 				},
 				{
 					"dataset": {
@@ -116,7 +116,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourceUserProfile",
+				"     format: 'table') ~> SourceInCSV",
 				"source(output(",
 				"          Color_Tool as string,",
 				"          Color_Chip_Name as string,",
@@ -205,7 +205,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"SourceUserProfile select(skipDuplicateMapInputs: true,",
+				"SourceInCSV select(skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> SelectEntityID",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
