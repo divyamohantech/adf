@@ -139,7 +139,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"SourceUserprofile, SourceFileInCSV lookup(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"SourceUserprofile, SourceFileInCSV lookup(ERROR_FUNCTION('') == Color_Chip_Name,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupFetchEntityID",
