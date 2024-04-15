@@ -24,6 +24,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceUserProfile"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -110,6 +113,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceUserProfile",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
 				"select3, SourceCOLORTOOLDB exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
