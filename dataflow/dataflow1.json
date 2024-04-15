@@ -17,6 +17,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceUserprofile"
+				},
+				{
+					"dataset": {
+						"referenceName": "Table_COLORTOOLDB",
+						"type": "DatasetReference"
+					},
+					"name": "SourceColorTool"
 				}
 			],
 			"sinks": [
@@ -94,6 +101,15 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceUserprofile",
+				"source(output(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceColorTool",
 				"select3 exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
