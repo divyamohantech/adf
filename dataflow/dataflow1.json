@@ -110,7 +110,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
-				"select3 exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
+				"select3, SourceColorTool exists(select3@COLOR_TOOL_NAME == SourceCOLORTOOLDB@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestConditionExist",
 				"SourceFileInCSV select(mapColumn(",
@@ -199,7 +199,10 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> TablePANEL"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Color_Chip_Name = NAME",
+				"     )) ~> TablePANEL"
 			]
 		}
 	}
