@@ -5,6 +5,8 @@
 			{
 				"name": "dataflow1",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -30,14 +32,7 @@
 				"name": "LookupForUserProfile",
 				"description": "Lookup to fetch entity id from userprofile table",
 				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "dataflow1",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
