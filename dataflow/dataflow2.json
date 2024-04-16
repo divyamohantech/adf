@@ -133,7 +133,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
-				"SourceFileInCSV, SourcePANEL join(SourceFileInCSV@Color_Chip_Source == SourcePANEL@Color_Chip_Source,",
+				"SourceFileInCSV, SourcePANEL join(Color_Chip_Name == SourcePANEL@Color_Chip_Source,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
