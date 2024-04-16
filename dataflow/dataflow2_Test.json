@@ -13,7 +13,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
+						"referenceName": "TablePANEL",
 						"type": "DatasetReference"
 					},
 					"name": "SOURCECOLORTOOL"
@@ -48,9 +48,17 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourcePANEL",
 				"source(output(",
-				"          COLOR_TOOL_ID as integer,",
-				"          COLOR_TOOL_NAME as string,",
-				"          COLOR_TOOL_TYPE_ID as integer",
+				"          PANEL_ID as integer,",
+				"          Color_Chip_Name as string,",
+				"          IS_METALLIC as integer,",
+				"          CREATE_USER_ID as integer,",
+				"          CREATE_DATE as timestamp,",
+				"          NOTES as string,",
+				"          IS_PUBLIC as integer,",
+				"          ENTITY_ID as integer,",
+				"          IS_INACTIVE as integer,",
+				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
+				"          IS_FLAGGED as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
