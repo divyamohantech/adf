@@ -5,14 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "Source"
+					"name": "SourcePanel"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> Source"
+				"     validateSchema: false) ~> SourcePanel"
 			]
 		}
 	}
