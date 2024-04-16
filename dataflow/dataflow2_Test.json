@@ -73,7 +73,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceINCSV",
-				"SourcePanel, SourceINCSV join(ERROR_FUNCTION('') == Color_Chip_Name,",
+				"SourcePanel, SourceINCSV join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
