@@ -10,6 +10,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourcePanel"
+				},
+				{
+					"name": "Source"
 				}
 			],
 			"sinks": [],
@@ -31,7 +34,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourcePanel"
+				"     format: 'table') ~> SourcePanel",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> Source"
 			]
 		}
 	}
