@@ -73,7 +73,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceINCSV",
-				"SourceINCSV, SourcePanel join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"SourcePanel, SourceINCSV join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
