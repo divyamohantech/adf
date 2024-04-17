@@ -146,7 +146,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
-				"     COLOR_TOOL_Name = max(Color_Chip_Name)) ~> aggregate1",
+				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
