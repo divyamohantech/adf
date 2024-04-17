@@ -128,7 +128,7 @@
 				"     input(",
 				"          COLOR_CHIP_ID as integer,",
 				"          PANEL_ID as integer,",
-				"          CHIP_SOURCE as integer,",
+				"          CHIP_SOURCE as string,",
 				"          IS_ACTIVE as integer,",
 				"          LAST_UPDATED_DATE as timestamp,",
 				"          COLOR_TOOL_ID as integer,",
