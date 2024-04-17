@@ -13,18 +13,18 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
-					"name": "SOURCECOLORTOOL"
-				},
-				{
-					"dataset": {
 						"referenceName": "ReadInCSV",
 						"type": "DatasetReference"
 					},
 					"name": "SourceFileInCSV",
 					"description": "Import data from ReadInCSV1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Table_SPECTRAL_READING",
+						"type": "DatasetReference"
+					},
+					"name": "SourceSR"
 				}
 			],
 			"sinks": [
@@ -42,6 +42,9 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "PANELJOINSR"
 				}
 			],
 			"scriptLines": [
@@ -62,15 +65,6 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourcePANEL",
-				"source(output(",
-				"          COLOR_TOOL_ID as integer,",
-				"          COLOR_TOOL_NAME as string,",
-				"          COLOR_TOOL_TYPE_ID as integer",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SOURCECOLORTOOL",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
@@ -114,19 +108,35 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
+				"source(output(",
+				"          READING_ID as integer,",
+				"          PANEL_ID as integer,",
+				"          READING_DATE as timestamp,",
+				"          MEASUREMENT_SCHEME as string,",
+				"          DEVICE_NAME as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceSR",
 				"SourceFileInCSV, SourcePANEL join({Color Chip Name} == NAME,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL aggregate(groupBy(Scheme,",
+				"PANELJOINSR aggregate(groupBy(Scheme,",
 				"          Instrument,",
 				"          DateTime,",
-				"          PANEL_ID),",
+				"          SourcePANEL@PANEL_ID),",
 				"     Scheme1 = first(Scheme),",
 				"          DateTime1 = first(DateTime),",
 				"          Instrument1 = first(Instrument),",
-				"          PANEL_ID1 = max(PANEL_ID)) ~> aggregate1",
+				"          PANEL_ID1 = max(SourcePANEL@PANEL_ID)) ~> aggregate1",
+				"INFILEJOINPANEL, SourceSR join(ERROR_FUNCTION('') == SourceSR@PANEL_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> PANELJOINSR",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
