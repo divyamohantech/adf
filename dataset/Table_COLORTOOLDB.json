@@ -25,7 +25,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "PANEL"
+			"table": "COLOR_TOOL"
 		}
 	}
 }
