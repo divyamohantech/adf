@@ -1,0 +1,41 @@
+{
+	"name": "Table_SPECTRAL_READING",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "COLORDBSQLConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "READING_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PANEL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "READING_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MEASUREMENT_SCHEME",
+				"type": "varchar"
+			},
+			{
+				"name": "DEVICE_NAME",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SPECTRAL_READING"
+		}
+	}
+}
