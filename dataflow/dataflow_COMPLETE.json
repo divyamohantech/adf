@@ -44,6 +44,9 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -147,6 +150,7 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
+				"TestConditionExist derive() ~> derivedColumn1",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -173,7 +177,7 @@
 				"     format: 'inline',",
 				"     output: false,",
 				"     saveOrder: 0) ~> CacheColorToolValues",
-				"TestConditionExist sink(validateSchema: false,",
+				"derivedColumn1 sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
