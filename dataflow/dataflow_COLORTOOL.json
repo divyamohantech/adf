@@ -17,6 +17,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceColorTool"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -26,6 +29,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "TableCOLORTOOLDB"
+				},
+				{
+					"name": "sink1"
 				}
 			],
 			"transformations": [
@@ -34,6 +40,9 @@
 				},
 				{
 					"name": "select3"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -89,8 +98,10 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
-				"     negate:true,",
+				"     negate:false,",
 				"     broadcast: 'both')~> TestConditionExist",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_Name = {Color Tool},",
@@ -134,6 +145,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
+				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name)) ~> aggregate1",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -151,7 +163,14 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
-				"     )) ~> TableCOLORTOOLDB"
+				"     )) ~> TableCOLORTOOLDB",
+				"aggregate1 sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> sink1"
 			]
 		}
 	}
