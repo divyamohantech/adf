@@ -30,7 +30,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Table_Color_Chip",
+						"referenceName": "Table_SPECTRAL_READING",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -130,14 +130,11 @@
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          COLOR_CHIP_ID as integer,",
+				"          READING_ID as integer,",
 				"          PANEL_ID as integer,",
-				"          CHIP_SOURCE as string,",
-				"          IS_ACTIVE as integer,",
-				"          LAST_UPDATED_DATE as timestamp,",
-				"          COLOR_TOOL_ID as integer,",
-				"          SOURCE_SYSTEM_NAME as string,",
-				"          SOURCE_SYSTEM_ID as integer",
+				"          READING_DATE as timestamp,",
+				"          MEASUREMENT_SCHEME as string,",
+				"          DEVICE_NAME as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -149,8 +146,9 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          PANEL_ID,",
-				"          CHIP_SOURCE = {Color Chip Source},",
-				"          COLOR_TOOL_ID",
+				"          MEASUREMENT_SCHEME = Scheme,",
+				"          DEVICE_NAME = Instrument,",
+				"          READING_DATE = DateTime",
 				"     )) ~> sink1"
 			]
 		}
