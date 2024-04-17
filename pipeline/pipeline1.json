@@ -61,7 +61,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow1",
+						"referenceName": "dataflow_COLORTOOL",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -231,7 +231,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow1",
+						"referenceName": "dataflow_COLORTOOL",
 						"type": "DataFlowReference"
 					},
 					"compute": {
