@@ -121,7 +121,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
-				"select3, SourceColorTool exists(select3@COLOR_TOOL_NAME == SourceColorTool@COLOR_TOOL_NAME,",
+				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'left')~> TestConditionExist",
 				"SourceFileInCSV select(mapColumn(",
