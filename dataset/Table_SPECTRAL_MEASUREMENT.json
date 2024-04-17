@@ -1,0 +1,35 @@
+{
+	"name": "Table_SPECTRAL_MEASUREMENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "COLORDBSQLConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "MEASUREMENT_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "READING_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GEOMETRY",
+				"type": "varchar"
+			},
+			{
+				"name": "RAW_DATA",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SPECTRAL_MEASUREMENT"
+		}
+	}
+}
