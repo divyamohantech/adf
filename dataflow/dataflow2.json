@@ -145,7 +145,7 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          PANEL_ID,",
-				"          CHIP_SOURCE = Color_Chip_Source,",
+				"          CHIP_SOURCE = {Color Chip Source},",
 				"          COLOR_TOOL_ID",
 				"     )) ~> sink1"
 			]
