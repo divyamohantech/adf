@@ -46,7 +46,7 @@
 			"scriptLines": [
 				"source(output(",
 				"          PANEL_ID as integer,",
-				"          Color_Chip_Name as string,",
+				"          NAME as string,",
 				"          IS_METALLIC as integer,",
 				"          CREATE_USER_ID as integer,",
 				"          CREATE_DATE as timestamp,",
