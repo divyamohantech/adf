@@ -99,7 +99,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
-				"     negate:false,",
+				"     negate:true,",
 				"     broadcast: 'both')~> TestConditionExist",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_Name = {Color Tool},",
