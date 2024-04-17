@@ -22,11 +22,7 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Table_SPECTRAL_MEASUREMENT",
-						"type": "DatasetReference"
-					},
-					"name": "sink1"
+					"name": "CacheColorCoordinate"
 				}
 			],
 			"transformations": [
@@ -112,25 +108,17 @@
 				"          {400_1} = first(400)) ~> aggregate1",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          MEASUREMENT_ID as integer,",
-				"          READING_ID as integer,",
-				"          GEOMETRY as string,",
-				"          RAW_DATA as string",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
 				"     mapColumn(",
 				"          READING_ID,",
 				"          GEOMETRY = Geometry,",
 				"          RAW_DATA = {400}",
-				"     )) ~> sink1"
+				"     )) ~> CacheColorCoordinate"
 			]
 		}
 	}
