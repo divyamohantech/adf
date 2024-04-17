@@ -30,7 +30,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Table_SPECTRAL_READING",
+						"referenceName": "Table_SPECTRAL_MEASUREMENT",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -124,15 +124,14 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"PANELJOINSR aggregate(groupBy(Scheme,",
-				"          Instrument,",
-				"          DateTime,",
-				"          SourcePANEL@PANEL_ID),",
-				"     Scheme1 = first(Scheme),",
-				"          DateTime1 = first(DateTime),",
-				"          Instrument1 = first(Instrument),",
-				"          PANEL_ID1 = max(SourcePANEL@PANEL_ID)) ~> aggregate1",
-				"INFILEJOINPANEL, SourceSR join(ERROR_FUNCTION('') == SourceSR@PANEL_ID,",
+				"PANELJOINSR aggregate(groupBy(READING_ID,",
+				"          Geometry,",
+				"          {400},",
+				"          {410}),",
+				"     READING_ID = first(READING_ID),",
+				"          Geometry = first(Geometry),",
+				"          {400} = first(400)) ~> aggregate1",
+				"INFILEJOINPANEL, SourceSR join(SourcePANEL@PANEL_ID == SourceSR@PANEL_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -140,11 +139,10 @@
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
+				"          MEASUREMENT_ID as integer,",
 				"          READING_ID as integer,",
-				"          PANEL_ID as integer,",
-				"          READING_DATE as timestamp,",
-				"          MEASUREMENT_SCHEME as string,",
-				"          DEVICE_NAME as string",
+				"          GEOMETRY as string,",
+				"          RAW_DATA as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -155,10 +153,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          PANEL_ID,",
-				"          MEASUREMENT_SCHEME = Scheme,",
-				"          DEVICE_NAME = Instrument,",
-				"          READING_DATE = DateTime",
+				"          READING_ID,",
+				"          GEOMETRY = Geometry,",
+				"          RAW_DATA = {400}",
 				"     )) ~> sink1"
 			]
 		}
