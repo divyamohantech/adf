@@ -1,0 +1,57 @@
+{
+	"name": "Table_Color_Chip",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "COLORDBSQLConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COLOR_CHIP_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PANEL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CHIP_SOURCE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IS_ACTIVE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LAST_UPDATED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "COLOR_TOOL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SOURCE_SYSTEM_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_ID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "COLOR_CHIP"
+		}
+	}
+}

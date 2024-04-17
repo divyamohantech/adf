@@ -46,6 +46,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"name": "TableNewRecordsCSV"
 				}
 			],
 			"transformations": [
@@ -227,7 +230,14 @@
 				"     mapColumn(",
 				"          Color_Chip_Name = NAME,",
 				"          ENTITY_ID = ENTITY_ID.ENTITY_ID",
-				"     )) ~> sink1"
+				"     )) ~> sink1",
+				"TestConditionExist sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> TableNewRecordsCSV"
 			]
 		}
 	}

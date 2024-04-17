@@ -26,7 +26,15 @@
 					"name": "SourceFileInCSV"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Table_Color_Chip",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "INFILEJOINPANEL"
@@ -114,7 +122,32 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> RESULTJOINSOURCECOLOR"
+				"     broadcast: 'auto')~> RESULTJOINSOURCECOLOR",
+				"RESULTJOINSOURCECOLOR sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          COLOR_CHIP_ID as integer,",
+				"          PANEL_ID as integer,",
+				"          CHIP_SOURCE as integer,",
+				"          IS_ACTIVE as integer,",
+				"          LAST_UPDATED_DATE as timestamp,",
+				"          COLOR_TOOL_ID as integer,",
+				"          SOURCE_SYSTEM_NAME as string,",
+				"          SOURCE_SYSTEM_ID as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          PANEL_ID,",
+				"          CHIP_SOURCE = Color_Chip_Source,",
+				"          COLOR_TOOL_ID",
+				"     )) ~> sink1"
 			]
 		}
 	}
