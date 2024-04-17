@@ -25,7 +25,7 @@
 						"referenceName": "Table_COLORTOOLDB",
 						"type": "DatasetReference"
 					},
-					"name": "TableCOLORTOOLDB"
+					"name": "TableCOLORTOOLDB1"
 				},
 				{
 					"name": "CacheColorToolValues"
@@ -157,7 +157,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select4",
-				"alterRow1 sink(allowSchemaDrift: true,",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          COLOR_TOOL_ID as integer,",
@@ -171,25 +171,25 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 1,",
+				"     saveOrder: 0,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
-				"     )) ~> TableCOLORTOOLDB",
+				"     )) ~> TableCOLORTOOLDB1",
 				"aggregate1 sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 1) ~> CacheColorToolValues",
+				"     saveOrder: 0) ~> CacheColorToolValues",
 				"TestConditionExist sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 1) ~> CacheInCsv"
+				"     saveOrder: 0) ~> CacheInCsv"
 			]
 		}
 	}
