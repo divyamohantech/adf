@@ -14,11 +14,7 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
-					"name": "TableCOLORTOOLDB"
+					"name": "INCSVCACHE"
 				}
 			],
 			"transformations": [
@@ -114,22 +110,15 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"select3 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          COLOR_TOOL_ID as integer,",
-				"          COLOR_TOOL_NAME as string,",
-				"          COLOR_TOOL_TYPE_ID as integer",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
-				"     )) ~> TableCOLORTOOLDB"
+				"     )) ~> INCSVCACHE"
 			]
 		}
 	}
