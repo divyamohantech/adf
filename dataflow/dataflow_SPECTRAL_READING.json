@@ -41,7 +41,7 @@
 					"name": "INFILEJOINPANEL"
 				},
 				{
-					"name": "RESULTJOINSOURCECOLOR"
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -119,12 +119,15 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL, SOURCECOLORTOOL join({Color Tool} == COLOR_TOOL_NAME,",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> RESULTJOINSOURCECOLOR",
-				"RESULTJOINSOURCECOLOR sink(allowSchemaDrift: true,",
+				"INFILEJOINPANEL aggregate(groupBy(Scheme,",
+				"          Instrument,",
+				"          DateTime,",
+				"          PANEL_ID),",
+				"     Scheme1 = first(Scheme),",
+				"          DateTime1 = first(DateTime),",
+				"          Instrument1 = first(Instrument),",
+				"          PANEL_ID1 = max(PANEL_ID)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          COLOR_CHIP_ID as integer,",
