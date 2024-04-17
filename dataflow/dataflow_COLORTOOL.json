@@ -17,9 +17,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceColorTool"
-				},
-				{
-					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -31,7 +28,10 @@
 					"name": "TableCOLORTOOLDB"
 				},
 				{
-					"name": "sink1"
+					"name": "CacheColorToolValues"
+				},
+				{
+					"name": "CacheInCsv"
 				}
 			],
 			"transformations": [
@@ -98,8 +98,6 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:false,",
 				"     broadcast: 'both')~> TestConditionExist",
@@ -161,6 +159,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
@@ -171,7 +170,14 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 1) ~> sink1"
+				"     saveOrder: 1) ~> CacheColorToolValues",
+				"TestConditionExist sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> CacheInCsv"
 			]
 		}
 	}
