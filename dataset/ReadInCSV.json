@@ -11,8 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "in.csv",
-				"folderPath": "Input",
-				"container": "adfdemo"
+				"container": "test"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
