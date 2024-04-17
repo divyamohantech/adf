@@ -2,7 +2,7 @@
 	"name": "TablePANEL",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabasePANEL",
+			"referenceName": "COLORDBSQLConnection",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

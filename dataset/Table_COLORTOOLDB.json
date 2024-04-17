@@ -2,7 +2,7 @@
 	"name": "Table_COLORTOOLDB",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabase4",
+			"referenceName": "COLORDBSQLConnection",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

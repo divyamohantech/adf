@@ -2,7 +2,7 @@
 	"name": "TableUserProfile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseUserprofile",
+			"referenceName": "COLORDBSQLConnection",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
