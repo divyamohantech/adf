@@ -1,5 +1,5 @@
 {
-	"name": "dataflowCOLORCHIP",
+	"name": "dataflow_COLORCHIP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -23,7 +23,8 @@
 						"referenceName": "ReadInCSV",
 						"type": "DatasetReference"
 					},
-					"name": "SourceFileInCSV"
+					"name": "SourceFileInCSV",
+					"description": "Import data from ReadInCSV1"
 				}
 			],
 			"sinks": [
