@@ -151,7 +151,7 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
-				"select4 alterRow(insertIf(notEquals(COLOR_TOOL_Name, COLOR_TOOL_Name) )) ~> alterRow1",
+				"select4 alterRow(deleteIf(notEquals(COLOR_TOOL_Name,COLOR_TOOL_Name))) ~> alterRow1",
 				"TestConditionExist select(mapColumn(",
 				"          COLOR_TOOL_Name,",
 				"          Color_Chip_Name,",
