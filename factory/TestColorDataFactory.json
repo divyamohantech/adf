@@ -1,0 +1,9 @@
+{
+	"name": "TestColorDataFactory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9da8ad2b-7ae8-48ae-8e3e-3a58ebc9edc3",
+		"tenantId": "92240c00-0237-4c33-b1f6-62a649961f2e"
+	}
+}
