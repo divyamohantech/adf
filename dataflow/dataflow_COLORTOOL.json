@@ -16,7 +16,8 @@
 						"referenceName": "Table_COLORTOOLDB",
 						"type": "DatasetReference"
 					},
-					"name": "SourceColorTool"
+					"name": "SourceColorTool",
+					"description": "Import data from Table_COLORTOOLDB1"
 				}
 			],
 			"sinks": [
