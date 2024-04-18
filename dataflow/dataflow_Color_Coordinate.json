@@ -103,12 +103,7 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 1,",
-				"     mapColumn(",
-				"          READING_ID,",
-				"          GEOMETRY = Geometry,",
-				"          RAW_DATA = {400}",
-				"     )) ~> CacheColorCoordinate"
+				"     saveOrder: 1) ~> CacheColorCoordinate"
 			]
 		}
 	}
