@@ -39,6 +39,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Azure Function2",
@@ -51,7 +52,11 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"functionName": "https://dbeu01001-stag.simplesetupcloud.com/api/checkDBHealth?healthToken=WittSSUPortalConnector2020",
+								"method": "GET"
+							}
 						},
 						{
 							"name": "Copy data1",
