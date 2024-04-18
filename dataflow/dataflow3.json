@@ -101,14 +101,13 @@
 				"     broadcast: 'auto')~> join1",
 				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['samplePanelNew.csv'],",
+				"     partitionFileNames:['samplePanel.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
 				"          Name = NAME,",
 				"          PANEL_ID",
-				"     ),",
-				"     partitionBy('hash', 1)) ~> sink1New"
+				"     )) ~> sink1New"
 			]
 		}
 	}
