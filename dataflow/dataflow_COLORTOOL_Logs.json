@@ -1,0 +1,186 @@
+{
+	"name": "dataflow_COLORTOOL_Logs",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ReadInCSV",
+						"type": "DatasetReference"
+					},
+					"name": "SourceFileInCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "Table_COLORTOOLDB",
+						"type": "DatasetReference"
+					},
+					"name": "SourceColorTool",
+					"description": "Import data from Table_COLORTOOLDB1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Table_COLORTOOLDB",
+						"type": "DatasetReference"
+					},
+					"name": "TableCOLORTOOLDB"
+				},
+				{
+					"name": "CacheColorToolValues"
+				},
+				{
+					"name": "CacheInCsv"
+				}
+			],
+			"transformations": [
+				{
+					"name": "TestConditionExist"
+				},
+				{
+					"name": "select3"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {Color Tool} as string,",
+				"          {Color Chip Name} as string,",
+				"          DateTime as string,",
+				"          {Color Chip Source} as string,",
+				"          Scheme as string,",
+				"          Instrument as string,",
+				"          Geometry as string,",
+				"          {400} as double,",
+				"          {410} as double,",
+				"          {420} as double,",
+				"          {430} as double,",
+				"          {440} as double,",
+				"          {450} as double,",
+				"          {460} as double,",
+				"          {470} as double,",
+				"          {480} as double,",
+				"          {490} as double,",
+				"          {500} as double,",
+				"          {510} as double,",
+				"          {520} as double,",
+				"          {530} as double,",
+				"          {540} as double,",
+				"          {550} as double,",
+				"          {560} as double,",
+				"          {570} as double,",
+				"          {580} as double,",
+				"          {590} as double,",
+				"          {600} as double,",
+				"          {610} as double,",
+				"          {620} as double,",
+				"          {630} as double,",
+				"          {640} as double,",
+				"          {650} as double,",
+				"          {660} as double,",
+				"          {670} as double,",
+				"          {680} as double,",
+				"          {690} as double,",
+				"          {700} as double",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     ignoreNoFilesFound: false,",
+				"     maxColumns: 100) ~> SourceFileInCSV",
+				"source(output(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceColorTool",
+				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
+				"     negate:true,",
+				"     broadcast: 'both')~> TestConditionExist",
+				"SourceFileInCSV select(mapColumn(",
+				"          COLOR_TOOL_Name = {Color Tool},",
+				"          Color_Chip_Name = {Color Chip Name},",
+				"          DateTime,",
+				"          Color_Chip_Source = {Color Chip Source},",
+				"          Scheme,",
+				"          Instrument,",
+				"          Geometry,",
+				"          {400},",
+				"          {410},",
+				"          {420},",
+				"          {430},",
+				"          {440},",
+				"          {450},",
+				"          {460},",
+				"          {470},",
+				"          {480},",
+				"          {490},",
+				"          {500},",
+				"          {510},",
+				"          {520},",
+				"          {530},",
+				"          {540},",
+				"          {550},",
+				"          {560},",
+				"          {570},",
+				"          {580},",
+				"          {590},",
+				"          {600},",
+				"          {610},",
+				"          {620},",
+				"          {630},",
+				"          {640},",
+				"          {650},",
+				"          {660},",
+				"          {670},",
+				"          {680},",
+				"          {690},",
+				"          {700}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
+				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 0,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
+				"     )) ~> TableCOLORTOOLDB",
+				"aggregate1 sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 0) ~> CacheColorToolValues",
+				"TestConditionExist sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 0) ~> CacheInCsv"
+			]
+		}
+	}
+}
