@@ -213,13 +213,15 @@
 				"          Color_Tool_Name as string,",
 				"          Color_Tool_Type_ID as string",
 				"     ),",
+				"     partitionFileNames:[''],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
 				"          Color_Tool_ID = COLOR_TOOL_ID,",
 				"          Color_Tool_Name = COLOR_TOOL_Name,",
 				"          Color_Tool_Type_ID = COLOR_TOOL_TYPE_ID",
-				"     )) ~> SinkColorToolNewCSV"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> SinkColorToolNewCSV"
 			]
 		}
 	}
