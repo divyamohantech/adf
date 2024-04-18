@@ -38,7 +38,7 @@
 			],
 			"transformations": [
 				{
-					"name": "TestConditionExist"
+					"name": "TestConditionNotExist"
 				},
 				{
 					"name": "select3"
@@ -103,7 +103,7 @@
 				"     format: 'table') ~> SourceColorTool",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
-				"     broadcast: 'both')~> TestConditionExist",
+				"     broadcast: 'both')~> TestConditionNotExist",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_Name = {Color Tool},",
 				"          Color_Chip_Name = {Color Chip Name},",
@@ -146,7 +146,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3",
-				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
+				"TestConditionNotExist aggregate(groupBy(COLOR_TOOL_Name),",
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -174,7 +174,7 @@
 				"     format: 'inline',",
 				"     output: false,",
 				"     saveOrder: 0) ~> CacheColorToolValues",
-				"TestConditionExist sink(validateSchema: false,",
+				"TestConditionNotExist sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
