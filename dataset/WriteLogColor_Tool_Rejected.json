@@ -1,5 +1,5 @@
 {
-	"name": "WriteLogColor_Tool_New",
+	"name": "WriteLogColor_Tool_Rejected",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorageINCSV",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Color_Tool_New.csv",
+				"fileName": "Color_Tool_Rejected.csv.csv",
 				"container": "test"
 			},
 			"columnDelimiter": ",",

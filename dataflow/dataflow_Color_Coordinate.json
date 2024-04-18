@@ -28,6 +28,9 @@
 			"transformations": [
 				{
 					"name": "INFILEJOINPANEL"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -96,7 +99,9 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL sink(allowSchemaDrift: true,",
+				"INFILEJOINPANEL derive(ColorString = CONCAT(400  + \",\" + 410) \r",
+				") ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
