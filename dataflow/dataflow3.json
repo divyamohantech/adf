@@ -25,7 +25,7 @@
 						"referenceName": "WriteLogPanel",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sink1New"
 				}
 			],
 			"transformations": [
@@ -101,14 +101,14 @@
 				"     broadcast: 'auto')~> join1",
 				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['samplePanel1.csv'],",
+				"     partitionFileNames:['samplePanelNew.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
 				"          Name = NAME,",
 				"          PANEL_ID",
 				"     ),",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"     partitionBy('hash', 1)) ~> sink1New"
 			]
 		}
 	}
