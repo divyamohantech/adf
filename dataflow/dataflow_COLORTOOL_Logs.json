@@ -35,10 +35,6 @@
 					"name": "CacheInCsv"
 				},
 				{
-					"dataset": {
-						"referenceName": "WriteLogColor_Tool_New",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -53,10 +49,8 @@
 					"name": "aggregate1"
 				},
 				{
-					"name": "join1"
-				},
-				{
-					"name": "select4"
+					"name": "join1",
+					"description": "Inner join on 'aggregate1' and 'SourceColorTool'1"
 				}
 			],
 			"scriptLines": [
@@ -164,16 +158,7 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1 select(mapColumn(",
-				"          COLOR_TOOL_Name = aggregate1@COLOR_TOOL_Name,",
-				"          COLOR_TOOL_Name1,",
-				"          COLOR_TOOL_ID,",
-				"          COLOR_TOOL_NAME = SourceColorTool@COLOR_TOOL_NAME,",
-				"          COLOR_TOOL_TYPE_ID",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select4",
+				"     broadcast: 'right')~> join1",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -206,49 +191,9 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 2) ~> CacheInCsv",
-				"select4 sink(allowSchemaDrift: true,",
+				"     saveOrder: 1) ~> CacheInCsv",
+				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          Color_Tool as string,",
-				"          Color_Chip_Name as string,",
-				"          DateTime as string,",
-				"          Color_Chip_Source as string,",
-				"          Scheme as string,",
-				"          Instrument as string,",
-				"          Geometry as string,",
-				"          i400 as string,",
-				"          i410 as string,",
-				"          i420 as string,",
-				"          i430 as string,",
-				"          i440 as string,",
-				"          i450 as string,",
-				"          i460 as string,",
-				"          i470 as string,",
-				"          i480 as string,",
-				"          i490 as string,",
-				"          i500 as string,",
-				"          i510 as string,",
-				"          i520 as string,",
-				"          i530 as string,",
-				"          i5Color1 as string,",
-				"          i550 as string,",
-				"          i560 as string,",
-				"          i570 as string,",
-				"          i580 as string,",
-				"          i590 as string,",
-				"          i600 as string,",
-				"          i610 as string,",
-				"          i620 as string,",
-				"          i630 as string,",
-				"          i640 as string,",
-				"          i650 as string,",
-				"          i660 as string,",
-				"          i670 as string,",
-				"          i680 as string,",
-				"          i690 as string,",
-				"          i700 as string",
-				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
