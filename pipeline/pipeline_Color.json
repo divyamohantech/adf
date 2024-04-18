@@ -41,11 +41,11 @@
 				}
 			},
 			{
-				"name": "dataflow11",
+				"name": "df_PANEL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "dataflow1",
+						"activity": "df_COLORTOOL",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -195,7 +195,7 @@
 				]
 			},
 			{
-				"name": "dataflow1",
+				"name": "df_COLORTOOL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -219,11 +219,11 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "df_COLORCHIP",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "dataflow11",
+						"activity": "df_PANEL",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -250,11 +250,11 @@
 				}
 			},
 			{
-				"name": "Data flow2",
+				"name": "df_SPECTRAL_READING",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow1",
+						"activity": "df_COLORCHIP",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -281,11 +281,11 @@
 				}
 			},
 			{
-				"name": "Data flow3",
+				"name": "df_SPECTRAL_MEASUREMENT",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow2",
+						"activity": "df_SPECTRAL_READING",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -312,11 +312,11 @@
 				}
 			},
 			{
-				"name": "Data flow4",
+				"name": "df_Color_Coordinate",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow3",
+						"activity": "df_SPECTRAL_MEASUREMENT",
 						"dependencyConditions": [
 							"Succeeded"
 						]
