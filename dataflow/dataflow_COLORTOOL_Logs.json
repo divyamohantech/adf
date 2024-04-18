@@ -51,6 +51,12 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "join1"
+				},
+				{
+					"name": "select4"
 				}
 			],
 			"scriptLines": [
@@ -154,6 +160,20 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"TestConditionExist aggregate(groupBy(COLOR_TOOL_Name),",
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
+				"aggregate1, SourceColorTool join(aggregate1@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          COLOR_TOOL_Name = aggregate1@COLOR_TOOL_Name,",
+				"          COLOR_TOOL_Name1,",
+				"          COLOR_TOOL_ID,",
+				"          COLOR_TOOL_NAME = SourceColorTool@COLOR_TOOL_NAME,",
+				"          COLOR_TOOL_TYPE_ID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -187,7 +207,7 @@
 				"     format: 'inline',",
 				"     output: false,",
 				"     saveOrder: 2) ~> CacheInCsv",
-				"TestConditionExist sink(allowSchemaDrift: true,",
+				"select4 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Color_Tool as string,",
@@ -230,8 +250,7 @@
 				"          i700 as string",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 4) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
