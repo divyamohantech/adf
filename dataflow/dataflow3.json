@@ -9,7 +9,7 @@
 						"referenceName": "TablePANEL",
 						"type": "DatasetReference"
 					},
-					"name": "SourcePanel"
+					"name": "SourcePanel1"
 				},
 				{
 					"dataset": {
@@ -50,7 +50,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourcePanel",
+				"     format: 'table') ~> SourcePanel1",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
@@ -94,7 +94,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceINCSV1",
-				"SourcePanel, SourceINCSV1 join(NAME == {Color Chip Name},",
+				"SourcePanel1, SourceINCSV1 join(NAME == {Color Chip Name},",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
