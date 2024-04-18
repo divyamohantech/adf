@@ -45,6 +45,9 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "TestConditionExist"
 				}
 			],
 			"scriptLines": [
@@ -101,7 +104,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
-				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
+				"TestConditionExist, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'both')~> TestConditionNotExist",
 				"SourceFileInCSV select(mapColumn(",
@@ -148,6 +151,9 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"TestConditionNotExist aggregate(groupBy(COLOR_TOOL_Name),",
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
+				"SourceFileInCSV, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
+				"     negate:false,",
+				"     broadcast: 'auto')~> TestConditionExist",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
