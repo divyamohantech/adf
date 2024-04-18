@@ -213,7 +213,7 @@
 				"          Color_Tool_Name as string,",
 				"          Color_Tool_Type_ID as string",
 				"     ),",
-				"     partitionFileNames:[''],",
+				"     partitionFileNames:['Color_Tool_New.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
