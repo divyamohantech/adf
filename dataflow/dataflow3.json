@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "WriteLogColor_Tool_Rejected",
+						"referenceName": "WriteLogPanel",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -102,9 +102,8 @@
 				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          Color_Tool_ID as string,",
-				"          Color_Tool_Name as string,",
-				"          Color_Tool_Type_ID as string",
+				"          Name as string,",
+				"          PANEL_ID as string",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
