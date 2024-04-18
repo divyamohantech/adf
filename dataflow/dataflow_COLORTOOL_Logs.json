@@ -172,14 +172,14 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 0) ~> CacheColorToolValues",
+				"     saveOrder: 1) ~> CacheColorToolValues",
 				"TestConditionExist sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 0) ~> CacheInCsv"
+				"     saveOrder: 2) ~> CacheInCsv"
 			]
 		}
 	}
