@@ -39,7 +39,7 @@
 						"referenceName": "WriteLogColor_Tool_New",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "SinkColorToolNewCSV"
 				}
 			],
 			"transformations": [
@@ -219,7 +219,7 @@
 				"          Color_Tool_ID = COLOR_TOOL_ID,",
 				"          Color_Tool_Name = COLOR_TOOL_Name,",
 				"          Color_Tool_Type_ID = COLOR_TOOL_TYPE_ID",
-				"     )) ~> sink1"
+				"     )) ~> SinkColorToolNewCSV"
 			]
 		}
 	}
