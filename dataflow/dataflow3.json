@@ -106,7 +106,11 @@
 				"          PANEL_ID as string",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Name = NAME,",
+				"          PANEL_ID",
+				"     )) ~> sink1"
 			]
 		}
 	}
