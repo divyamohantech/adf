@@ -6,13 +6,6 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "TablePANEL",
-						"type": "DatasetReference"
-					},
-					"name": "SourcePanel"
-				},
-				{
-					"dataset": {
 						"referenceName": "ReadInCSV",
 						"type": "DatasetReference"
 					},
@@ -28,29 +21,8 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "join1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
-				"source(output(",
-				"          PANEL_ID as integer,",
-				"          NAME as string,",
-				"          IS_METALLIC as integer,",
-				"          CREATE_USER_ID as integer,",
-				"          CREATE_DATE as timestamp,",
-				"          NOTES as string,",
-				"          IS_PUBLIC as integer,",
-				"          ENTITY_ID as integer,",
-				"          IS_INACTIVE as integer,",
-				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
-				"          IS_FLAGGED as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourcePanel",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
@@ -94,19 +66,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceINCSV",
-				"SourcePanel, SourceINCSV join(NAME == {Color Chip Name},",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1 sink(allowSchemaDrift: true,",
+				"SourceINCSV sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     mapColumn(",
-				"          Name = NAME,",
-				"          PANEL_ID",
-				"     )) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
