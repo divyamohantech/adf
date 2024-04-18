@@ -208,7 +208,7 @@
 				"     format: 'inline',",
 				"     output: false,",
 				"     saveOrder: 1) ~> CacheInCsv",
-				"select4 sink(allowSchemaDrift: true,",
+				"select4 sink(allowSchemaDrift: false,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Color_Tool as string,",
