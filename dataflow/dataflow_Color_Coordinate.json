@@ -28,9 +28,6 @@
 			"transformations": [
 				{
 					"name": "INFILEJOINPANEL"
-				},
-				{
-					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -99,14 +96,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL aggregate(groupBy(READING_ID,",
-				"          Geometry,",
-				"          {400},",
-				"          {410}),",
-				"     READING_ID_1 = first(READING_ID),",
-				"          Geometry_1 = first(Geometry),",
-				"          {400_1} = first(400)) ~> aggregate1",
-				"aggregate1 sink(allowSchemaDrift: true,",
+				"INFILEJOINPANEL sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
