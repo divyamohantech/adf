@@ -6,10 +6,17 @@
 			"sources": [
 				{
 					"dataset": {
+						"referenceName": "TablePANEL",
+						"type": "DatasetReference"
+					},
+					"name": "SourcePanel"
+				},
+				{
+					"dataset": {
 						"referenceName": "ReadInCSV",
 						"type": "DatasetReference"
 					},
-					"name": "SourceINCSV"
+					"name": "SourceINCSV1"
 				}
 			],
 			"sinks": [
@@ -21,8 +28,29 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
 			"scriptLines": [
+				"source(output(",
+				"          PANEL_ID as integer,",
+				"          NAME as string,",
+				"          IS_METALLIC as integer,",
+				"          CREATE_USER_ID as integer,",
+				"          CREATE_DATE as timestamp,",
+				"          NOTES as string,",
+				"          IS_PUBLIC as integer,",
+				"          ENTITY_ID as integer,",
+				"          IS_INACTIVE as integer,",
+				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
+				"          IS_FLAGGED as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourcePanel",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
@@ -65,11 +93,24 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SourceINCSV",
-				"SourceINCSV sink(allowSchemaDrift: true,",
+				"     ignoreNoFilesFound: false) ~> SourceINCSV1",
+				"SourcePanel, SourceINCSV1 join(NAME == {Color Chip Name},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Name as string,",
+				"          PANEL_ID as string",
+				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Name = NAME,",
+				"          PANEL_ID",
+				"     )) ~> sink1"
 			]
 		}
 	}
