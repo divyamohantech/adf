@@ -20,11 +20,11 @@
 		},
 		"schema": [
 			{
-				"name": "Color_Tool",
+				"name": "Color Tool",
 				"type": "String"
 			},
 			{
-				"name": "Color_Chip_Name",
+				"name": "Color Chip Name",
 				"type": "String"
 			},
 			{
@@ -32,7 +32,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Color_Chip_Source",
+				"name": "Color Chip Source",
 				"type": "String"
 			},
 			{
@@ -48,127 +48,127 @@
 				"type": "String"
 			},
 			{
-				"name": "i400",
+				"name": "400",
 				"type": "String"
 			},
 			{
-				"name": "i410",
+				"name": "410",
 				"type": "String"
 			},
 			{
-				"name": "i420",
+				"name": "420",
 				"type": "String"
 			},
 			{
-				"name": "i430",
+				"name": "430",
 				"type": "String"
 			},
 			{
-				"name": "i440",
+				"name": "440",
 				"type": "String"
 			},
 			{
-				"name": "i450",
+				"name": "450",
 				"type": "String"
 			},
 			{
-				"name": "i460",
+				"name": "460",
 				"type": "String"
 			},
 			{
-				"name": "i470",
+				"name": "470",
 				"type": "String"
 			},
 			{
-				"name": "i480",
+				"name": "480",
 				"type": "String"
 			},
 			{
-				"name": "i490",
+				"name": "490",
 				"type": "String"
 			},
 			{
-				"name": "i500",
+				"name": "500",
 				"type": "String"
 			},
 			{
-				"name": "i510",
+				"name": "510",
 				"type": "String"
 			},
 			{
-				"name": "i520",
+				"name": "520",
 				"type": "String"
 			},
 			{
-				"name": "i530",
+				"name": "530",
 				"type": "String"
 			},
 			{
-				"name": "i5Color1",
+				"name": "540",
 				"type": "String"
 			},
 			{
-				"name": "i550",
+				"name": "550",
 				"type": "String"
 			},
 			{
-				"name": "i560",
+				"name": "560",
 				"type": "String"
 			},
 			{
-				"name": "i570",
+				"name": "570",
 				"type": "String"
 			},
 			{
-				"name": "i580",
+				"name": "580",
 				"type": "String"
 			},
 			{
-				"name": "i590",
+				"name": "590",
 				"type": "String"
 			},
 			{
-				"name": "i600",
+				"name": "600",
 				"type": "String"
 			},
 			{
-				"name": "i610",
+				"name": "610",
 				"type": "String"
 			},
 			{
-				"name": "i620",
+				"name": "620",
 				"type": "String"
 			},
 			{
-				"name": "i630",
+				"name": "630",
 				"type": "String"
 			},
 			{
-				"name": "i640",
+				"name": "640",
 				"type": "String"
 			},
 			{
-				"name": "i650",
+				"name": "650",
 				"type": "String"
 			},
 			{
-				"name": "i660",
+				"name": "660",
 				"type": "String"
 			},
 			{
-				"name": "i670",
+				"name": "670",
 				"type": "String"
 			},
 			{
-				"name": "i680",
+				"name": "680",
 				"type": "String"
 			},
 			{
-				"name": "i690",
+				"name": "690",
 				"type": "String"
 			},
 			{
-				"name": "i700",
+				"name": "700",
 				"type": "String"
 			}
 		]
