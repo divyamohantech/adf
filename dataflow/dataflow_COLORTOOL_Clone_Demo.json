@@ -153,13 +153,12 @@
 				"     output: false,",
 				"     saveOrder: 0) ~> CacheInCsv",
 				"TestCommanRecords sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     input(",
 				"          Color_Tool_ID as string,",
 				"          Color_Tool_Name as string,",
 				"          Color_Tool_Type_ID as string",
 				"     ),",
-				"     emptyLinesAsHeader: 1,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sinkRejectionCSV"
 			]
