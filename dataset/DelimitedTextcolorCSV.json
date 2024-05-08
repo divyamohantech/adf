@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedTextcolorCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageINCSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Color_Tool_New.csv",
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "COLOR_TOOL_ID",
+				"type": "String"
+			},
+			{
+				"name": "COLOR_TOOL_NAME",
+				"type": "String"
+			},
+			{
+				"name": "COLOR_TOOL_TYPE_ID",
+				"type": "String"
+			}
+		]
+	}
+}
