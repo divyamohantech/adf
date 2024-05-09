@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedTextRejectionNew",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageINCSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Color_Tool_Rejected.csv",
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Color_Tool_ID",
+				"type": "String"
+			},
+			{
+				"name": "Color_Tool_Name",
+				"type": "String"
+			},
+			{
+				"name": "Color_Tool_Type_ID",
+				"type": "String"
+			}
+		]
+	}
+}

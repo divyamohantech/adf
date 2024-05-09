@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflow3",
+				"name": "dataflow_COLORTOOL_Clone_Demo",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow3",
+						"referenceName": "dataflow_COLORTOOL_Clone_Demo",
 						"type": "DataFlowReference"
 					},
 					"compute": {
