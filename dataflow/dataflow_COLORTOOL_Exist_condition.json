@@ -32,7 +32,22 @@
 					"name": "CacheColorToolValues"
 				},
 				{
-					"name": "CacheInCsv"
+					"name": "CacheInCsv",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureBlobStorageINCSV",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedTextRejectionNew",
+						"type": "DatasetReference"
+					},
+					"name": "SinkDataToRejectionCSV",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureBlobStorageINCSV",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -179,7 +194,16 @@
 				"     store: 'cache',",
 				"     format: 'inline',",
 				"     output: false,",
-				"     saveOrder: 0) ~> CacheInCsv"
+				"     saveOrder: 0) ~> CacheInCsv",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     input(",
+				"          Color_Tool_ID as string,",
+				"          Color_Tool_Name as string,",
+				"          Color_Tool_Type_ID as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SinkDataToRejectionCSV"
 			]
 		}
 	}
