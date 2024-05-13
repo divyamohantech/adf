@@ -1,0 +1,48 @@
+{
+	"name": "DelimitedTextColorChipCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageINCSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "newcolor_chip.csv",
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "COLOR_CHIP_ID",
+				"type": "String"
+			},
+			{
+				"name": "PANEL_ID",
+				"type": "String"
+			},
+			{
+				"name": "CHIP_SOURCE",
+				"type": "String"
+			},
+			{
+				"name": "IS_ACTIVE",
+				"type": "String"
+			},
+			{
+				"name": "LAST_UPDATED_DATE",
+				"type": "String"
+			},
+			{
+				"name": "COLOR_TOOL_ID",
+				"type": "String"
+			}
+		]
+	}
+}

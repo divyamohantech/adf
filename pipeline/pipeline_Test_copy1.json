@@ -1,9 +1,9 @@
 {
-	"name": "pipeline_3_Color_Chip_CSV",
+	"name": "pipeline_Test_copy1",
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflow_COLORCHIP",
+				"name": "dataflow_SPECTRAL_READING",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow_COLORCHIP",
+						"referenceName": "dataflow_SPECTRAL_READING",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -27,11 +27,11 @@
 				}
 			},
 			{
-				"name": "Copy data to color chip",
+				"name": "Copy data from spectralreading table to csv file",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "dataflow_COLORCHIP",
+						"activity": "dataflow_SPECTRAL_READING",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -68,12 +68,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "COLOR_CHIP_ID",
+									"name": "READING_ID",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "COLOR_CHIP_ID",
+									"name": "READING_ID",
 									"type": "String",
 									"physicalType": "String"
 								}
@@ -92,72 +92,36 @@
 							},
 							{
 								"source": {
-									"name": "CHIP_SOURCE",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CHIP_SOURCE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "IS_ACTIVE",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "IS_ACTIVE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "LAST_UPDATED_DATE",
+									"name": "READING_DATE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "LAST_UPDATED_DATE",
+									"name": "READING_DATE",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "COLOR_TOOL_ID",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "COLOR_TOOL_ID",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "SOURCE_SYSTEM_NAME",
+									"name": "MEASUREMENT_SCHEME",
 									"type": "String",
 									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "SOURCE_SYSTEM_NAME",
+									"name": "MEASUREMENT_SCHEME",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "SOURCE_SYSTEM_ID",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DEVICE_NAME",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "SOURCE_SYSTEM_ID",
+									"name": "DEVICE_NAME",
 									"type": "String",
 									"physicalType": "String"
 								}
@@ -172,13 +136,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Table_Color_Chip",
+						"referenceName": "Table_SPECTRAL_READING",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextColorChipCSV",
+						"referenceName": "DelimitedTextSpectralReading",
 						"type": "DatasetReference"
 					}
 				]

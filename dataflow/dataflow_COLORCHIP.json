@@ -147,7 +147,8 @@
 				"     mapColumn(",
 				"          PANEL_ID,",
 				"          CHIP_SOURCE = {Color Chip Source},",
-				"          COLOR_TOOL_ID",
+				"          COLOR_TOOL_ID,",
+				"          LAST_UPDATED_DATE = DateTime",
 				"     )) ~> sink1"
 			]
 		}
