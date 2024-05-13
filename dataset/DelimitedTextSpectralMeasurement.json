@@ -1,0 +1,40 @@
+{
+	"name": "DelimitedTextSpectralMeasurement",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageINCSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Spectral_Measurement.csv",
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "MEASUREMENT_ID",
+				"type": "String"
+			},
+			{
+				"name": "READING_ID",
+				"type": "String"
+			},
+			{
+				"name": "GEOMETRY",
+				"type": "String"
+			},
+			{
+				"name": "RAW_DATA",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -1,37 +1,13 @@
 {
-	"name": "pipeline_4_Spectral_Reading",
+	"name": "pipeline_5_sepectral_measurement",
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflow_SPECTRAL_READING",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "dataflow_SPECTRAL_READING",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
-				"name": "Copy data from spectralreading table to csv file",
+				"name": "Copy data from spectralmeasurement table to csv file",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "dataflow_SPECTRAL_READING",
+						"activity": "dataflow_SPECTRAL_MEASUREMENT",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -142,10 +118,34 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextSpectralReading",
+						"referenceName": "DelimitedTextSpectralMeasurement",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "dataflow_SPECTRAL_MEASUREMENT",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflow_SPECTRAL_MEASUREMENT",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": []
