@@ -41,7 +41,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"method": "GET",
+					"method": "POST",
 					"url": "https://dummy.restapiexample.com/api/v1/employees"
 				}
 			}
