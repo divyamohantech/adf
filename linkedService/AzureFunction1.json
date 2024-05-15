@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
-			"functionAppUrl": "https://dummy.restapiexample.com/employees",
+			"functionAppUrl": "https://dummy.restapiexample.com/api/v1/employees",
 			"authentication": "Anonymous"
 		}
 	},
