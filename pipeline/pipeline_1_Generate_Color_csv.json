@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_1_generate_color_csv",
+	"name": "pipeline_1_Generate_Color_csv",
 	"properties": {
 		"activities": [
 			{
