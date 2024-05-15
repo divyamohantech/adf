@@ -1,0 +1,12 @@
+{
+	"name": "APIDataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "API_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
