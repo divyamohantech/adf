@@ -33,12 +33,16 @@
 					{
 						"activity": "dataflow1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('dataflow1').output.runStatus",
+						"type": "Expression"
+					},
 					"isSequential": false,
 					"activities": [
 						{
@@ -54,8 +58,18 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"functionName": "https://dbeu01001-stag.simplesetupcloud.com/api/checkDBHealth?healthToken=WittSSUPortalConnector2020",
-								"method": "GET"
+								"functionName": "create",
+								"body": {
+									"name": "test",
+									"salary": "123",
+									"age": "23",
+									"id": 25
+								},
+								"method": "POST"
+							},
+							"linkedServiceName": {
+								"referenceName": "AzureFunction1",
+								"type": "LinkedServiceReference"
 							}
 						},
 						{
@@ -78,8 +92,166 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"enableStaging": false
-							}
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "PANEL_COLOR_COORDINATE_ID",
+												"type": "Int32",
+												"physicalType": "int"
+											},
+											"sink": {
+												"name": "PANEL_COLOR_COORDINATE_ID",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "PANEL_ID",
+												"type": "Int32",
+												"physicalType": "int"
+											},
+											"sink": {
+												"name": "PANEL_ID",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "GEOMETRY",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "GEOMETRY",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "SPARKLE",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "SPARKLE",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MEASUREMENT_SCHEME",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "MEASUREMENT_SCHEME",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "L",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "L",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "A",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "A",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "B",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "B",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "C",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "C",
+												"type": "String",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "ILLUMINANT_OBSERVE",
+												"type": "String",
+												"physicalType": "varchar"
+											},
+											"sink": {
+												"name": "ILLUMINANT_OBSERVE",
+												"type": "String",
+												"physicalType": "String"
+											}
+										}
+									],
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTableCOLOR_COORDINATE",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DelimitedTextCOLORCOORDINATE",
+									"type": "DatasetReference"
+								}
+							]
 						}
 					]
 				}

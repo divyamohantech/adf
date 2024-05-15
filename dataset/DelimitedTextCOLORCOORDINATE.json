@@ -1,0 +1,64 @@
+{
+	"name": "DelimitedTextCOLORCOORDINATE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageINCSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Color_coordinate.csv",
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PANEL_COLOR_COORDINATE_ID",
+				"type": "String"
+			},
+			{
+				"name": "PANEL_ID",
+				"type": "String"
+			},
+			{
+				"name": "GEOMETRY",
+				"type": "String"
+			},
+			{
+				"name": "SPARKLE",
+				"type": "String"
+			},
+			{
+				"name": "MEASUREMENT_SCHEME",
+				"type": "String"
+			},
+			{
+				"name": "L",
+				"type": "String"
+			},
+			{
+				"name": "A",
+				"type": "String"
+			},
+			{
+				"name": "B",
+				"type": "String"
+			},
+			{
+				"name": "C",
+				"type": "String"
+			},
+			{
+				"name": "ILLUMINANT_OBSERVE",
+				"type": "String"
+			}
+		]
+	}
+}
