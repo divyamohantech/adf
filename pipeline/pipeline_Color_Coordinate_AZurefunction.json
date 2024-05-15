@@ -15,13 +15,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "create",
+					"functionName": "employees",
 					"body": {
 						"name": "aman",
 						"salary": "123",
 						"age": "23"
 					},
-					"method": "POST"
+					"method": "GET"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction1",
