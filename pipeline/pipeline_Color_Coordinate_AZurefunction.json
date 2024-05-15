@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "employees",
+					"functionName": "employees1",
 					"body": {
 						"name": "aman",
 						"salary": "123",
