@@ -158,8 +158,12 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -210,7 +214,9 @@
 									"type": "String"
 								}
 							}
-						]
+						],
+						"collectionReference": "",
+						"mapComplexValuesToString": true
 					}
 				},
 				"inputs": [
@@ -225,6 +231,119 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Copy API data to table azure').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy API data to table azure",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"additionalColumns": {
+										"type": "Expression",
+										"value": "@item().value"
+									},
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET",
+									"paginationRules": {
+										"supportRFC5988": "true"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['data'][0]['id']"
+											},
+											"sink": {
+												"name": "ID",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['data'][0]['email']"
+											},
+											"sink": {
+												"name": "email",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['data'][0]['first_name']"
+											},
+											"sink": {
+												"name": "first_name",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['data'][0]['last_name']"
+											},
+											"sink": {
+												"name": "last_name",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['data'][0]['avatar']"
+											},
+											"sink": {
+												"name": "avatar",
+												"type": "String"
+											}
+										}
+									]
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "APIDataSet",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable1",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"variables": {
