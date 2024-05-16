@@ -18,6 +18,13 @@
 					},
 					"name": "SourceFileInCSV",
 					"description": "Import data from ReadInCSV1"
+				},
+				{
+					"dataset": {
+						"referenceName": "SQLDynamicDS",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -94,6 +101,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
 				"SourceFileInCSV, SourcePANEL join({Color Chip Name} == NAME,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
