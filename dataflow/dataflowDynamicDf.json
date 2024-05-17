@@ -72,7 +72,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
 				"source1 select(mapColumn(",
-				"          COLOR_Tool_Name = Color_Tool,",
+				"          COLOR_Tool_Name,",
 				"          Color_Chip_Name,",
 				"          DateTime,",
 				"          Color_Chip_Source,",
