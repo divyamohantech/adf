@@ -21,6 +21,9 @@
 						"datasetParameters": {
 							"source1": {
 								"TableName": "InCSV"
+							},
+							"sink1": {
+								"TableName": "InCSV_NEW"
 							}
 						}
 					},
