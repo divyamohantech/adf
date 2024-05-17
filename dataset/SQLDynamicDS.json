@@ -14,7 +14,7 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "Color_Tool",
+				"name": "COLOR_Tool_Name",
 				"type": "nvarchar"
 			},
 			{
