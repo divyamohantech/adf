@@ -19,11 +19,25 @@
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"source(output(",
+				"          PANEL_ID as integer,",
+				"          NAME as string,",
+				"          IS_METALLIC as integer,",
+				"          CREATE_USER_ID as integer,",
+				"          CREATE_DATE as timestamp,",
+				"          NOTES as string,",
+				"          IS_PUBLIC as integer,",
+				"          ENTITY_ID as integer,",
+				"          IS_INACTIVE as integer,",
+				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
+				"          IS_FLAGGED as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 derive() ~> derivedColumn1"
+				"source1 derive(PANEL_ID = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}

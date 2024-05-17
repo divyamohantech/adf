@@ -368,7 +368,7 @@
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"source1": {
-								"TableName": "API_Response"
+								"TableName": "COLOR_TOOL"
 							}
 						}
 					},
