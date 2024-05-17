@@ -164,7 +164,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          COLOR_Tool_Name,",
+				"          Color_Tool = COLOR_Tool_Name,",
 				"          Color_Chip_Name,",
 				"          DateTime,",
 				"          Color_Chip_Source,",
