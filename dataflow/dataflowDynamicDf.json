@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -60,11 +60,51 @@
 				"          {700} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: true,",
-				"     inferDriftedColumnTypes: true,",
+				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 derive(PANEL_ID = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"source1 select(mapColumn(",
+				"          COLOR_Tool_Name,",
+				"          Color_Chip_Name,",
+				"          DateTime,",
+				"          Color_Chip_Source,",
+				"          Scheme,",
+				"          Instrument,",
+				"          Geometry,",
+				"          {400},",
+				"          {410},",
+				"          {420},",
+				"          {430},",
+				"          {440},",
+				"          {450},",
+				"          {460},",
+				"          {470},",
+				"          {480},",
+				"          {490},",
+				"          {500},",
+				"          {510},",
+				"          {520},",
+				"          {530},",
+				"          {540},",
+				"          {550},",
+				"          {560},",
+				"          {570},",
+				"          {580},",
+				"          {590},",
+				"          {600},",
+				"          {610},",
+				"          {620},",
+				"          {630},",
+				"          {640},",
+				"          {650},",
+				"          {660},",
+				"          {670},",
+				"          {680},",
+				"          {690},",
+				"          {700}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
