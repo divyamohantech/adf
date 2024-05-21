@@ -25,7 +25,8 @@
 					"name": "TestExistConditionUnique"
 				},
 				{
-					"name": "aggregate1"
+					"name": "aggregate1",
+					"description": "Aggregating data by 'COLOR_Tool_Name' producing columns 'COLOR_Tool_Name1'"
 				}
 			],
 			"scriptLines": [
@@ -86,7 +87,7 @@
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestExistConditionUnique",
 				"TestExistConditionUnique aggregate(groupBy(COLOR_Tool_Name),",
-				"     COLOR_Tool_Name = ERROR_FUNCTION('')) ~> aggregate1"
+				"     COLOR_Tool_Name = first(COLOR_TOOL_Name)) ~> aggregate1"
 			]
 		}
 	}
