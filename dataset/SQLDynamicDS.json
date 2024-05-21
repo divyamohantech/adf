@@ -14,156 +14,18 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "COLOR_Tool_Name",
-				"type": "nvarchar"
+				"name": "COLOR_TOOL_ID",
+				"type": "int",
+				"precision": 10
 			},
 			{
-				"name": "Color_Chip_Name",
-				"type": "nvarchar"
+				"name": "COLOR_TOOL_NAME",
+				"type": "varchar"
 			},
 			{
-				"name": "DateTime",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Color_Chip_Source",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Scheme",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Instrument",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Geometry",
-				"type": "nvarchar"
-			},
-			{
-				"name": "400",
-				"type": "nvarchar"
-			},
-			{
-				"name": "410",
-				"type": "nvarchar"
-			},
-			{
-				"name": "420",
-				"type": "nvarchar"
-			},
-			{
-				"name": "430",
-				"type": "nvarchar"
-			},
-			{
-				"name": "440",
-				"type": "nvarchar"
-			},
-			{
-				"name": "450",
-				"type": "nvarchar"
-			},
-			{
-				"name": "460",
-				"type": "nvarchar"
-			},
-			{
-				"name": "470",
-				"type": "nvarchar"
-			},
-			{
-				"name": "480",
-				"type": "nvarchar"
-			},
-			{
-				"name": "490",
-				"type": "nvarchar"
-			},
-			{
-				"name": "500",
-				"type": "nvarchar"
-			},
-			{
-				"name": "510",
-				"type": "nvarchar"
-			},
-			{
-				"name": "520",
-				"type": "nvarchar"
-			},
-			{
-				"name": "530",
-				"type": "nvarchar"
-			},
-			{
-				"name": "540",
-				"type": "nvarchar"
-			},
-			{
-				"name": "550",
-				"type": "nvarchar"
-			},
-			{
-				"name": "560",
-				"type": "nvarchar"
-			},
-			{
-				"name": "570",
-				"type": "nvarchar"
-			},
-			{
-				"name": "580",
-				"type": "nvarchar"
-			},
-			{
-				"name": "590",
-				"type": "nvarchar"
-			},
-			{
-				"name": "600",
-				"type": "nvarchar"
-			},
-			{
-				"name": "610",
-				"type": "nvarchar"
-			},
-			{
-				"name": "620",
-				"type": "nvarchar"
-			},
-			{
-				"name": "630",
-				"type": "nvarchar"
-			},
-			{
-				"name": "640",
-				"type": "nvarchar"
-			},
-			{
-				"name": "650",
-				"type": "nvarchar"
-			},
-			{
-				"name": "660",
-				"type": "nvarchar"
-			},
-			{
-				"name": "670",
-				"type": "nvarchar"
-			},
-			{
-				"name": "680",
-				"type": "nvarchar"
-			},
-			{
-				"name": "690",
-				"type": "nvarchar"
-			},
-			{
-				"name": "700",
-				"type": "nvarchar"
+				"name": "COLOR_TOOL_TYPE_ID",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {
