@@ -55,7 +55,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SourceColorTool",
-				"SourceInCSVNEW, SourceColorTool exists(SourceInCSVNEW@COLOR_Tool_Name == SourceColorTool@COLOR_TOOL_NAME,",
+				"SourceInCSVNEW, SourceColorTool exists(SourceInCSVNEW@COLOR_TOOL_NAME == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'auto')~> TestExistConditionUnique",
 				"TestExistConditionUnique select(mapColumn(",
