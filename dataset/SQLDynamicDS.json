@@ -14,18 +14,39 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "COLOR_TOOL_ID",
+				"name": "USER_ID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "COLOR_TOOL_NAME",
+				"name": "ENTITY_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "USER_NAME",
 				"type": "varchar"
 			},
 			{
-				"name": "COLOR_TOOL_TYPE_ID",
+				"name": "USER_TYPE_ID",
 				"type": "int",
 				"precision": 10
+			},
+			{
+				"name": "PASSWORD_EXPIRED",
+				"type": "varchar"
+			},
+			{
+				"name": "IS_INACTIVE",
+				"type": "varchar"
+			},
+			{
+				"name": "RESTRICT_PREFERENCES_ACCESS",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGINAL_ENTITY_ID",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
