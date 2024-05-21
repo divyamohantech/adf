@@ -28,7 +28,7 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Color_Tool as string,",
+				"          COLOR_Tool as string,",
 				"          Color_Chip_Name as string,",
 				"          DateTime as string,",
 				"          Color_Chip_Source as string,",
