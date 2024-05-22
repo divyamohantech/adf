@@ -69,149 +69,116 @@
 							{
 								"source": {
 									"name": "PANEL_ID",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "PANEL_ID",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "NAME",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "String"
 								},
 								"sink": {
 									"name": "NAME",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "IS_METALLIC",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "IS_METALLIC",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "CREATE_USER_ID",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "CREATE_USER_ID",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "CREATE_DATE",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "CREATE_DATE",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "NOTES",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "String"
 								},
 								"sink": {
 									"name": "NOTES",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "IS_PUBLIC",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "IS_PUBLIC",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "ENTITY_ID",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "ENTITY_ID",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "IS_INACTIVE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "IS_INACTIVE",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "AUDIT_SEARCH_INDEX_DATE",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "AUDIT_SEARCH_INDEX_DATE",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "IS_FLAGGED",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "String"
 								},
 								"sink": {
 									"name": "IS_FLAGGED",
-									"type": "String",
-									"physicalType": "String"
+									"type": "String"
 								}
 							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						]
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "TablePANEL",
-						"type": "DatasetReference"
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "DelimitedTextPanelCSV",

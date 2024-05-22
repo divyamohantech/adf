@@ -5,10 +5,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "TablePANEL",
-						"type": "DatasetReference"
-					},
 					"name": "SourcePanel1"
 				},
 				{
@@ -48,9 +44,7 @@
 				"          IS_FLAGGED as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourcePanel1",
+				"     validateSchema: false) ~> SourcePanel1",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",

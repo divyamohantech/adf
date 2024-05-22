@@ -12,36 +12,20 @@
 					"name": "SourceFileInCSV"
 				},
 				{
-					"dataset": {
-						"referenceName": "TableUserProfile",
-						"type": "DatasetReference"
-					},
 					"name": "SourceUserprofile"
 				},
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
 					"name": "SourceColorTool"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
 					"name": "TableCOLORTOOLDB"
 				},
 				{
 					"name": "SinkEntityIDValue"
 				},
 				{
-					"dataset": {
-						"referenceName": "TablePANEL",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -108,19 +92,14 @@
 				"          ENTITY_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'Select ENTITY_ID as ENTITY_ID from [dbo].[USER_PROFILE] Where User_Name =\\'pfadmin\\'',",
-				"     format: 'query') ~> SourceUserprofile",
+				"     validateSchema: false) ~> SourceUserprofile",
 				"source(output(",
 				"          COLOR_TOOL_ID as integer,",
 				"          COLOR_TOOL_NAME as string,",
 				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourceColorTool",
+				"     validateSchema: false) ~> SourceColorTool",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:true,",
 				"     broadcast: 'both')~> TestConditionExist",
@@ -170,22 +149,12 @@
 				"SourceUserprofile derive(ENTITY_ID = toInteger(ENTITY_ID)) ~> AddColumnsValueEntityID",
 				"TestConditionExist sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          COLOR_TOOL_ID as integer,",
-				"          COLOR_TOOL_NAME as string,",
-				"          COLOR_TOOL_TYPE_ID as integer",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
-				"     )) ~> TableCOLORTOOLDB",
+				"     ),",
+				"     format: 'table') ~> TableCOLORTOOLDB",
 				"AddColumnsValueEntityID sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
@@ -198,31 +167,13 @@
 				"     )) ~> SinkEntityIDValue",
 				"derivedColumn1 sink(allowSchemaDrift: false,",
 				"     validateSchema: false,",
-				"     input(",
-				"          PANEL_ID as integer,",
-				"          Color_Chip_Name as string,",
-				"          IS_METALLIC as integer,",
-				"          CREATE_USER_ID as integer,",
-				"          CREATE_DATE as timestamp,",
-				"          NOTES as string,",
-				"          IS_PUBLIC as integer,",
-				"          ENTITY_ID as integer,",
-				"          IS_INACTIVE as integer,",
-				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
-				"          IS_FLAGGED as string",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          Color_Chip_Name,",
 				"          ENTITY_ID = ENTITY_ID.ENTITY_ID",
-				"     )) ~> sink1"
+				"     ),",
+				"     format: 'table') ~> sink1"
 			]
 		}
 	}

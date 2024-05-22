@@ -12,20 +12,12 @@
 					"name": "SourceFileInCSV"
 				},
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
 					"name": "SourceColorTool",
 					"description": "Import data from Table_COLORTOOLDB1"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
 					"name": "TableCOLORTOOLDB"
 				},
 				{
@@ -112,9 +104,7 @@
 				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourceColorTool",
+				"     validateSchema: false) ~> SourceColorTool",
 				"select3, SourceColorTool exists(select3@COLOR_TOOL_Name == SourceColorTool@COLOR_TOOL_NAME,",
 				"     negate:false,",
 				"     broadcast: 'both')~> TestConditionExist",
@@ -164,23 +154,13 @@
 				"     COLOR_TOOL_Name1 = first(COLOR_TOOL_Name)) ~> aggregate1",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          COLOR_TOOL_ID as integer,",
-				"          COLOR_TOOL_NAME as string,",
-				"          COLOR_TOOL_TYPE_ID as integer",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 0,",
-				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
-				"     )) ~> TableCOLORTOOLDB",
+				"     ),",
+				"     format: 'table') ~> TableCOLORTOOLDB",
 				"aggregate1 sink(validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",

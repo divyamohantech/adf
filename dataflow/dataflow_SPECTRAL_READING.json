@@ -5,17 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "TablePANEL",
-						"type": "DatasetReference"
-					},
 					"name": "SourcePANEL"
 				},
 				{
-					"dataset": {
-						"referenceName": "Table_COLORTOOLDB",
-						"type": "DatasetReference"
-					},
 					"name": "SOURCECOLORTOOL"
 				},
 				{
@@ -59,18 +51,14 @@
 				"          IS_FLAGGED as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SourcePANEL",
+				"     validateSchema: false) ~> SourcePANEL",
 				"source(output(",
 				"          COLOR_TOOL_ID as integer,",
 				"          COLOR_TOOL_NAME as string,",
 				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SOURCECOLORTOOL",
+				"     validateSchema: false) ~> SOURCECOLORTOOL",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
