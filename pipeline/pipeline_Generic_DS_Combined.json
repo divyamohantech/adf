@@ -40,7 +40,14 @@
 			{
 				"name": "DF_generic_DS_pipeline_2",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "DF_generic_DS_pipline_1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
