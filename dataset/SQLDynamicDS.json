@@ -12,7 +12,22 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "COLOR_TOOL_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COLOR_TOOL_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "COLOR_TOOL_TYPE_ID",
+				"type": "int",
+				"precision": 10
+			}
+		],
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
