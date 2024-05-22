@@ -1,0 +1,78 @@
+{
+	"name": "pipeline_Generic_DS_Combined",
+	"properties": {
+		"activities": [
+			{
+				"name": "DF_generic_DS_pipline_1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_generic_DS_pipline_1",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"SourceInCSVNEW": {
+								"TableName": "InCSV_NEW"
+							},
+							"SourceColorTool": {
+								"TableName": "COLOR_TOOL"
+							},
+							"sink1": {
+								"TableName": "COLOR_TOOL"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "DF_generic_DS_pipeline_2",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_generic_DS_pipeline_2",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"SourceFileInCSV": {
+								"TableName": " InCSV_NEW"
+							},
+							"SourceUserprofile": {
+								"TableName": "USER_PROFILE"
+							},
+							"sink1": {
+								"TableName": "PANEL"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
