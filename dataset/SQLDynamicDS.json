@@ -12,62 +12,7 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [
-			{
-				"name": "PANEL_ID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "NAME",
-				"type": "varchar"
-			},
-			{
-				"name": "IS_METALLIC",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "CREATE_USER_ID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "CREATE_DATE",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			},
-			{
-				"name": "NOTES",
-				"type": "varchar"
-			},
-			{
-				"name": "IS_PUBLIC",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "ENTITY_ID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "IS_INACTIVE",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "AUDIT_SEARCH_INDEX_DATE",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			},
-			{
-				"name": "IS_FLAGGED",
-				"type": "varchar"
-			}
-		],
+		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
