@@ -12,6 +12,10 @@
 					"name": "SourceFileInCSV"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
 					"name": "SourceUserprofile"
 				}
 			],
@@ -80,10 +84,16 @@
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> SourceFileInCSV",
 				"source(output(",
-				"          ENTITY_ID as integer",
+				"          ID as integer,",
+				"          email as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          avatar as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SourceUserprofile",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourceUserprofile",
 				"SourceFileInCSV select(mapColumn(",
 				"          COLOR_TOOL_Name = {Color Tool},",
 				"          Color_Chip_Name = {Color Chip Name},",
