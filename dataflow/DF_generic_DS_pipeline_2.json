@@ -129,8 +129,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          NAME = COLOR_Tool_Name,",
-				"          ENTITY_ID = ENTITY_ID.ENTITY_ID",
+				"          COLOR_TOOL_NAME = COLOR_Tool_Name",
 				"     )) ~> sink1"
 			]
 		}
