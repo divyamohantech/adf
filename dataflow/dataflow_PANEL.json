@@ -25,6 +25,10 @@
 					"name": "SinkEntityIDValue"
 				},
 				{
+					"dataset": {
+						"referenceName": "SQLDynamicDS",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -151,13 +155,22 @@
 				"     )) ~> SinkEntityIDValue",
 				"derivedColumn1 sink(allowSchemaDrift: false,",
 				"     validateSchema: false,",
+				"     input(",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Color_Chip_Name,",
-				"          ENTITY_ID = ENTITY_ID.ENTITY_ID",
-				"     ),",
-				"     format: 'table') ~> sink1"
+				"          COLOR_TOOL_NAME = COLOR_TOOL_Name",
+				"     )) ~> sink1"
 			]
 		}
 	}
