@@ -9,7 +9,8 @@
 						"referenceName": "ReadInCSV",
 						"type": "DatasetReference"
 					},
-					"name": "SourceFileInCSV"
+					"name": "SourceFileInCSV",
+					"description": "Import data from ReadInCSv"
 				},
 				{
 					"dataset": {
