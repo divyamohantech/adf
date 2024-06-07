@@ -17,13 +17,28 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow_COLORCHIP",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"SourcePANEL": {
+								"TableName": "PANEL"
+							}
+						},
+						"linkedServiceParameters": {
+							"SourcePANEL": {
+								"schemaLinkedService": {
+									"TableName": "PANEL"
+								}
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
 				}
 			},
 			{
