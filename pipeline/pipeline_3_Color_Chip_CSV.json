@@ -21,12 +21,20 @@
 						"datasetParameters": {
 							"SourcePANEL": {
 								"TableName": "PANEL"
+							},
+							"SOURCECOLORTOOL": {
+								"TableName": "COLOR_TOOL"
 							}
 						},
 						"linkedServiceParameters": {
 							"SourcePANEL": {
 								"schemaLinkedService": {
 									"TableName": "PANEL"
+								}
+							},
+							"SOURCECOLORTOOL": {
+								"schemaLinkedService": {
+									"TableName": "COLOR_TOOL"
 								}
 							}
 						}
