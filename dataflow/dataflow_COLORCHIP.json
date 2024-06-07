@@ -12,6 +12,10 @@
 					"name": "SourcePANEL"
 				},
 				{
+					"dataset": {
+						"referenceName": "SQLDynamicDS",
+						"type": "DatasetReference"
+					},
 					"name": "SOURCECOLORTOOL"
 				},
 				{
@@ -56,7 +60,9 @@
 				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SOURCECOLORTOOL",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SOURCECOLORTOOL",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
