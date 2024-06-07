@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "SQLDynamicDS",
+						"type": "DatasetReference"
+					},
 					"name": "SourcePANEL"
 				},
 				{
@@ -38,20 +42,14 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          PANEL_ID as integer,",
-				"          NAME as string,",
-				"          IS_METALLIC as integer,",
-				"          CREATE_USER_ID as integer,",
-				"          CREATE_DATE as timestamp,",
-				"          NOTES as string,",
-				"          IS_PUBLIC as integer,",
-				"          ENTITY_ID as integer,",
-				"          IS_INACTIVE as integer,",
-				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
-				"          IS_FLAGGED as string",
+				"          COLOR_TOOL_ID as integer,",
+				"          COLOR_TOOL_NAME as string,",
+				"          COLOR_TOOL_TYPE_ID as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SourcePANEL",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourcePANEL",
 				"source(output(",
 				"          COLOR_TOOL_ID as integer,",
 				"          COLOR_TOOL_NAME as string,",
@@ -107,7 +105,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL, SOURCECOLORTOOL join({Color Tool} == COLOR_TOOL_NAME,",
+				"INFILEJOINPANEL, SOURCECOLORTOOL join({Color Tool} == SOURCECOLORTOOL@COLOR_TOOL_NAME,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -135,7 +133,7 @@
 				"     mapColumn(",
 				"          PANEL_ID,",
 				"          CHIP_SOURCE = {Color Chip Source},",
-				"          COLOR_TOOL_ID,",
+				"          COLOR_TOOL_ID = SOURCECOLORTOOL@COLOR_TOOL_ID,",
 				"          LAST_UPDATED_DATE = DateTime",
 				"     )) ~> sink1"
 			]
