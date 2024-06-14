@@ -120,7 +120,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> INFILEJOINPANEL",
-				"INFILEJOINPANEL, SOURCECOLORTOOL join({Color Tool} == SOURCECOLORTOOL@COLOR_TOOL_NAME,",
+				"INFILEJOINPANEL, SOURCECOLORTOOL join({Color Tool} == COLOR_TOOL_NAME,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
