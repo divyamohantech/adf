@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
 					"name": "SourcePANEL"
 				},
 				{
@@ -28,20 +32,16 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          PANEL_ID as integer,",
-				"          NAME as string,",
-				"          IS_METALLIC as integer,",
-				"          CREATE_USER_ID as integer,",
-				"          CREATE_DATE as timestamp,",
-				"          NOTES as string,",
-				"          IS_PUBLIC as integer,",
-				"          ENTITY_ID as integer,",
-				"          IS_INACTIVE as integer,",
-				"          AUDIT_SEARCH_INDEX_DATE as timestamp,",
-				"          IS_FLAGGED as string",
+				"          ID as integer,",
+				"          email as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          avatar as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> SourcePANEL",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SourcePANEL",
 				"source(output(",
 				"          {Color Tool} as string,",
 				"          {Color Chip Name} as string,",
