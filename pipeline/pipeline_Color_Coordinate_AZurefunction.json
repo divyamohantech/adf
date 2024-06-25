@@ -33,8 +33,6 @@
 			{
 				"name": "Web1",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "dataflow_Color_Coordinate",
@@ -57,7 +55,7 @@
 					}
 				],
 				"typeProperties": {
-					"method": "POST",
+					"method": "GET",
 					"url": "https://reqres.in/api/users",
 					"body": {
 						"page": "1"
@@ -67,8 +65,6 @@
 			{
 				"name": "dataflow_Color_Coordinate",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -111,8 +107,6 @@
 			{
 				"name": "Set variable1",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Web1",
