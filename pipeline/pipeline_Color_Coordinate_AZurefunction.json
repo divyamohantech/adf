@@ -77,13 +77,21 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow_Color_Coordinate",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"source1": {
+								"TableName": "COLOR_COORDINATE"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
 				}
 			},
 			{
